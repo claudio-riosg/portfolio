@@ -1,0 +1,41 @@
+<section class="hero">
+  <div class="hero-content" @slideUp>
+    <!-- Solo una animación por contenedor -->
+    <h1 class="hero-title">
+      Hi there, I'm <span class="highlight">Claudio Ríos</span>
+    </h1>
+
+    <p class="hero-description">
+      A software developer focused on frontend, who enjoys creating new things
+      with, clean and modern technologies.
+    </p>
+
+    <div class="hero-actions" @slideUp>
+      <app-button
+        [config]="{ type: 'primary', size: 'md' }"
+        (clicked)="onContactClick()"
+      >
+        Let’s Talk
+      </app-button>
+      <app-button
+        [config]="{ type: 'transparent', size: 'md' }"
+        (clicked)="onDownloadCvClick()"
+      >
+        Resume 🧩
+      </app-button>
+    </div>
+  </div>
+
+  <div class="hero-visual" @fadeIn>
+    <!-- <app-animated-avatar
+    [sensitivity]="20" 
+    [clickEffect]="true"
+  ></app-animated-avatar> -->
+    <div class="hero-content">
+      <app-profile-image
+        imageUrl="images/profile-ttt.webp"
+        altText="My Professional Photo"
+      ></app-profile-image>
+    </div>
+  </div>
+</section>

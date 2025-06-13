@@ -1,0 +1,10 @@
+<app-floating-island-background [imageUrl]="imageUrl()" [isDarkTheme]="false" />
+<div class="page-container">
+  <app-toc [sections]="tocSections"></app-toc>
+  <section class="content-container">
+    <app-contact-info [contactInfo]="contactInfo()"></app-contact-info>
+    <app-social-media-info
+      [socialMediaInfo]="socialMediaInfo()"
+    ></app-social-media-info>
+  </section>
+</div>

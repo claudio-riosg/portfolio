@@ -1,0 +1,232 @@
+
+:root {
+  // ====================
+  // Base Variables & Colors (Light Theme)
+  // ====================
+  --max-width-content: 1440px;
+  --content-padding: 2rem;
+  --content-padding-mobile: 1.5rem;
+
+  // General Colors
+  --color-primary: #4f46e5;
+  --color-primary-rgb: 79, 70, 229;
+  --color-secondary: #fe8198;
+  --color-secondary-rgb: 254, 129, 152;
+  --color-accent: #06b6d4;
+  --color-accent-rgb: 6, 182, 212;
+  --color-tertiary: #10b981;
+  --color-tertiary-rgb: 16, 185, 129;
+
+  // Text Colors (GLOBAL)
+  --color-heading: #111827; // For H1, H2, H3, etc.
+  --color-text-primary: #111827; // General main text
+  --color-text-secondary: #6b7280; // Secondary text, descriptions
+  --color-text-tertiary: #9ca3af; // Lighter text
+
+  // Background Colors
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f9fafb;
+
+  // Border & Separator Colors
+  --color-border-global: #e5e7eb;
+  --color-border-subtle: rgba(0, 0, 0, 0.1);
+
+  // Hover States
+  --hover-bg: rgba(0, 0, 0, 0.05);
+
+  // Accent UI elements
+  --accent-ui-bg: rgba(59, 130, 246, 0.1);
+  --accent-ui-rgb: 59, 130, 246;
+
+  // ====================
+  // Component Specific Variables (My Approach)
+  // ====================
+
+  // Card Variables
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-bg-hover: rgba(255, 255, 255, 0.9);
+  --card-border-color: rgba(0, 0, 0, 0.1);
+  --card-border-color-hover: rgba(0, 0, 0, 0.2);
+  --card-border-radius: 16px;
+
+  // Shadows
+  --shadow-card-default: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+  --shadow-icon: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+  // Icon Wrapper Variables
+  --icon-wrapper-size: 72px;
+  --icon-wrapper-border-radius: 16px;
+  --icon-size: 32px;
+  --icon-wrapper-size-mobile: 60px;
+
+  // Icon Colors
+  --icon-bg-primary: rgba(var(--color-primary-rgb), 0.1);
+  --icon-border-primary: rgba(var(--color-primary-rgb), 0.3);
+  --icon-color-primary: var(--color-primary);
+  --icon-effect-primary: rgba(var(--color-primary-rgb), 0.08);
+
+  --icon-bg-secondary: rgba(var(--color-secondary-rgb), 0.1);
+  --icon-border-secondary: rgba(var(--color-secondary-rgb), 0.3);
+  --icon-color-secondary: var(--color-secondary);
+  --icon-effect-secondary: rgba(var(--color-secondary-rgb), 0.08);
+
+  --icon-bg-accent: rgba(var(--color-accent-rgb), 0.1);
+  --icon-border-accent: rgba(var(--color-accent-rgb), 0.3);
+  --icon-color-accent: var(--color-accent);
+  --icon-effect-accent: rgba(var(--color-accent-rgb), 0.08);
+
+  --icon-bg-tertiary: rgba(var(--color-tertiary-rgb), 0.1);
+  --icon-border-tertiary: rgba(var(--color-tertiary-rgb), 0.3);
+  --icon-color-tertiary: var(--color-tertiary);
+  --icon-effect-tertiary: rgba(var(--color-tertiary-rgb), 0.08);
+
+  // Glow Effects
+  --glow-size: 120px;
+  --glow-scale-default: 0.8;
+  --glow-scale-hover: 1.2;
+  --glow-opacity-default: 0;
+  --glow-opacity-hover: 0.3;
+  --glow-strength: 0.2;
+  --bg-glow-strength: 0.1;
+
+  // Gradients
+  --gradient-text-hero: linear-gradient(135deg, #8b5cf6 0%, var(--color-secondary) 25%, var(--color-primary) 100%);
+  --card-hover-border-gradient: linear-gradient(45deg, transparent 25%, rgba(var(--color-primary-rgb), 0.5) 50%, transparent 75%);
+  --card-hover-border-gradient-start: linear-gradient(45deg, transparent 25%, rgba(var(--color-primary-rgb), 0.3) 50%, transparent 75%);
+  --card-hover-border-gradient-pulse: linear-gradient(45deg, transparent 25%, rgba(var(--color-primary-rgb), 0.7) 50%, transparent 75%);
+
+  // Spacing
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  --space-xxxl: 4rem;
+  --space-xxxxl: 8rem;
+
+  // Typography
+  --font-family-sans: 'Inter', sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-h1: 3.5rem;
+  --font-size-h2: 2.75rem;
+  --font-size-h2-mobile: 2.5rem;
+  --font-size-h3: 2.25rem;
+
+  // Transitions & Animations
+  --transition-duration-xs: 0.15s;
+  --transition-duration-sm: 0.2s;
+  --transition-duration-md: 0.3s;
+  --transition-duration-lg: 0.4s;
+  --transition-duration-xl: 0.6s;
+  --transition-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-easing-ease: ease;
+  --transition-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --pulse-animation-duration: 2s;
+
+  // Global UI Elements
+  --color-toggle-bg: #e0e0e0;
+  --color-toggle-thumb: #ffffff;
+  --color-sun-icon: #f59e0b;
+  --color-moon-icon: #6366f1;
+  --header-bg: rgba(255, 255, 255, 0.588);
+  --header-bg-mobile: rgb(255, 255, 255);
+  --blur-amount: 10px;
+
+  // Breakpoints
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+}
+
+// ====================
+// Dark Theme Overrides
+// ====================
+[data-theme="dark"] {
+  // General Colors
+  --color-primary: #818cf8;
+  --color-primary-rgb: 129, 140, 248;
+  // secondary, accent, tertiary RGBs remain the same for base calculation
+
+  // Text Colors (GLOBAL)
+  --color-heading: #f3f4f6;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #d1d5db;
+  --color-text-tertiary: #9ca3af;
+
+  // Background Colors
+  --color-bg: #1a1a1a;
+  --color-bg-secondary: #2d2d2d;
+
+  // Border & Separator Colors
+  --color-border-global: #374151;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+
+  // Hover States
+  --hover-bg: rgba(255, 255, 255, 0.05);
+
+  // Accent UI elements
+  --accent-ui-bg: rgba(59, 130, 246, 0.2);
+  --accent-ui-rgb: 96, 165, 250;
+
+  // Card Variables
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-bg-hover: rgba(255, 255, 255, 0.05);
+  --card-border-color: rgba(255, 255, 255, 0.1);
+  --card-border-color-hover: rgba(255, 255, 255, 0.2);
+
+  // Shadows
+  --shadow-card-default: none;
+  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-icon: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  // Icon Colors
+  --icon-bg-primary: rgba(var(--color-primary-rgb), 0.15);
+  --icon-border-primary: rgba(var(--color-primary-rgb), 0.25);
+  --icon-color-primary: var(--color-primary);
+  --icon-effect-primary: rgba(var(--color-primary-rgb), 0.1);
+
+  --icon-bg-secondary: rgba(var(--color-secondary-rgb), 0.15);
+  --icon-border-secondary: rgba(var(--color-secondary-rgb), 0.25);
+  --icon-color-secondary: var(--color-secondary);
+  --icon-effect-secondary: rgba(var(--color-secondary-rgb), 0.1);
+
+  --icon-bg-accent: rgba(var(--color-accent-rgb), 0.15);
+  --icon-border-accent: rgba(var(--color-accent-rgb), 0.25);
+  --icon-color-accent: var(--color-accent);
+  --icon-effect-accent: rgba(var(--color-accent-rgb), 0.1);
+
+  --icon-bg-tertiary: rgba(var(--color-tertiary-rgb), 0.15);
+  --icon-border-tertiary: rgba(var(--color-tertiary-rgb), 0.25);
+  --icon-color-tertiary: var(--color-tertiary);
+  --icon-effect-tertiary: rgba(var(--color-tertiary-rgb), 0.1);
+
+  // Glow Effects
+  --glow-opacity-hover: 0.2;
+  --glow-strength: 0.15;
+  --bg-glow-strength: 0.08;
+
+  // Gradients
+  --gradient-text-hero: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, var(--color-primary) 100%);
+  --card-hover-border-gradient: linear-gradient(45deg, transparent 25%, rgba(var(--color-primary-rgb), 0.4) 50%, transparent 75%);
+  --card-hover-border-gradient-start: linear-gradient(45deg, transparent 25%, rgba(var(--color-primary-rgb), 0.2) 50%, transparent 75%);
+  --card-hover-border-gradient-pulse: linear-gradient(45deg, transparent 25%, rgba(var(--color-primary-rgb), 0.6) 50%, transparent 75%);
+
+  // Global UI Elements
+  --color-toggle-bg: #444444;
+  --color-toggle-thumb: #222222;
+  --color-sun-icon: #fbbf24;
+  --color-moon-icon: #41528f;
+  --header-bg: rgba(19, 18, 30, 0.451);
+  --header-bg-mobile: rgba(19, 18, 30, 0.451);
+}

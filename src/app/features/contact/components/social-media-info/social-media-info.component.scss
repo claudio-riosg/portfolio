@@ -1,0 +1,15 @@
+.social-section {
+  .section-title {
+    font-size: calc(var(--text-base) * 1.8);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+  
+  .section-description {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+}

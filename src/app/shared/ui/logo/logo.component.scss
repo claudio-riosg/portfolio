@@ -1,0 +1,80 @@
+/* logo.component.scss */
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  height: auto;
+  max-width: 100%;
+  // Tamaños responsivos
+  width: clamp(60px, 12vw, 80px);
+  height: auto;
+  // Centrado vertical perfecto
+  margin: auto 0;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  // Mantener aspect ratio
+  aspect-ratio: 100 / 50;
+  // Optimización de renderizado
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+}
+
+/* Cursor animation */
+.logo-cursor {
+  animation: blink 1s infinite;
+  opacity: 1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .logo {
+    width: clamp(60px, 10vw, 80px);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: clamp(50px, 8vw, 70px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .logo-cursor {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .logo {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  svg path {
+    stroke: currentColor;
+    stroke-width: 0.5;
+  }
+}

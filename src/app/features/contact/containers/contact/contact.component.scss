@@ -1,0 +1,43 @@
+.page-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: var(--space-xl);
+}
+
+.content-container {
+  flex: 1;
+  min-width: 0;
+  padding-top: var(--space-sm); /* small padding to prevent content hiding behind sticky TOC */
+}
+
+@media (max-width: 992px) {
+  .page-container {
+    flex-direction: column;
+    padding: var(--space-md);
+  }
+  
+  .content-container {
+    padding-top: 0;
+  }
+}
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+
+@media (max-width: 768px) {
+  :host {
+    padding: var(--space-md);
+  }
+  
+  .contact-title {
+    font-size: calc(var(--text-base) * 2);
+  }
+  
+  .section-title {
+    font-size: calc(var(--text-base) * 1.5);
+  }
+}

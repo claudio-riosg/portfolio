@@ -1,0 +1,33 @@
+<div class="contact-section">
+  <h1 class="contact-title">Contact</h1>
+
+  <div class="contact-content">
+    <p class="contact-description">
+      Get in touch with me anytime, through social media or e-mail.
+    </p>
+
+    <p class="contact-note">
+      Just a friendly reminder that the information provided here is for
+      <strong>business purposes only</strong>. If you have any questions, feel
+      free to chat with me directly on my social media.
+    </p>
+
+    <p class="contact-note">
+      I appreciate your understanding in using this responsibly.
+    </p>
+
+    <div class="contact-divider"></div>
+
+    <app-table-content
+      [headers]="contactInfo().headers"
+      [rows]="contactInfo().rows"
+      [columnWidths]="contactInfo().columnWidths"
+    >
+    </app-table-content>
+
+    <p class="contact-footer">
+      If you need any other information, such as my phone number, please do
+      not hesitate to send me an email first.
+    </p>
+  </div>
+</div>

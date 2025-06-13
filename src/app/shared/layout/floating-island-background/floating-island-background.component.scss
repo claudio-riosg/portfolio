@@ -1,0 +1,49 @@
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* back content */
+  overflow: hidden;
+
+  .floating-island {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    filter: blur(10px);
+    transition: all 0.5s ease-in-out;
+  }
+
+  /* Tema Claro */
+  .island-shape {
+    fill: #d4e6f1; /* Azul claro */
+  }
+  .island-detail {
+    fill: #a8d0e6; /* Detalle más oscuro */
+  }
+
+  /* Tema Oscuro */
+  &.dark-theme {
+    .island-shape {
+      fill: #2a3a4a;
+    }
+    .island-detail {
+      fill: #1e2b38;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  .floating-island {
+    animation: float 10s ease-in-out infinite;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-island {
+    filter: blur(30px); /* more blur*/
+  }
+}

@@ -1,0 +1,39 @@
+<header class="header" [class.scrolled]="isScrolled()">
+  <div class="header-container">
+    <a
+      routerLink="/"
+      class="logo"
+      (click)="closeMenu()"
+      [attr.aria-label]="'Ir al inicio'"
+    >
+      <app-logo />
+    </a>
+
+    <button
+      class="burger"
+      [class.active]="menuOpen()"
+      (click)="toggleMenu()"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
+      [attr.aria-expanded]="menuOpen()"
+      type="button"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <div
+      class="nav-wrapper"
+      [class.open]="menuOpen()"
+      [attr.inert]="(isMobileView() && !menuOpen()) ? true : null"
+    >
+      <app-nav-links
+        [mobileMenuOpen]="menuOpen()"
+        [isMobileView]="isMobileView"
+        (linkClick)="closeMenu()"
+      ></app-nav-links>
+
+      <app-theme-toggle />
+    </div>
+  </div>
+</header>

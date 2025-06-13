@@ -1,0 +1,17 @@
+.avatar-container {
+  display: inline-block;
+  cursor: pointer;
+  transform-origin: center bottom;
+  transition: transform 0.5s ease-out;
+
+  svg {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="background-wrapper" [class.dark-theme]="isDarkTheme()">
+  @if (isDarkTheme()) {
+  <img
+   [src]="imageUrl() + '-dark.png'"
+    alt="Floating Island Background"
+    class="floating-island"
+  />
+  } @else{
+  <img
+    [src]="imageUrl() + '.png'"
+    alt="Floating Island Background"
+    class="floating-island"
+  />}
+</div>

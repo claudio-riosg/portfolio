@@ -1,0 +1,8 @@
+<button
+  [class]="buttonClasses"
+  [disabled]="config.disabled"
+  (click)="handleClick()"
+>
+  <span *ngIf="config.loading">Loading...</span>
+  <ng-content *ngIf="!config.loading"></ng-content>
+</button>

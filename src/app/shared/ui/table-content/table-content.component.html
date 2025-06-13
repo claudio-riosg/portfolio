@@ -1,0 +1,23 @@
+<div class="table-container">
+  <div class="table-row header">
+    @for (header of headers; track $index) {
+      <div class="table-cell" [style.flex]="columnWidths[$index] || '1'">
+        {{ header }}
+      </div>
+    }
+  </div>
+  
+  @for (row of rows; track $index) {
+    <div class="table-row">
+      @for (cell of row; track $index) {
+        <div class="table-cell" [style.flex]="columnWidths[$index] || '1'">
+          @if (cell.link) {
+            <a [href]="cell.link" target="_blank" rel="noopener noreferrer">{{ cell.text }}</a>
+          } @else {
+            {{ cell.text }}
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

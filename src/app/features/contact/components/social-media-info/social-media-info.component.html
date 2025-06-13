@@ -1,0 +1,15 @@
+  <div class="social-section">
+    <h2 class="section-title">Social Media</h2>
+    <p class="section-description">
+      If you want to find me on social media, maybe you can't find me hehe. I usually change my username on almost all platforms, 
+      so it could be a bit hard find me, sorry.
+    </p>
+    <p class="section-description">
+      For the same, I've included direct links to the platforms I use most frequently:
+    </p>
+    <app-table-content
+      [headers]="socialMediaInfo().headers"
+      [rows]="socialMediaInfo().rows"
+      [columnWidths]="socialMediaInfo().columnWidths">
+    </app-table-content>
+  </div>

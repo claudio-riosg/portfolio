@@ -1,15 +1,33 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./out-tsc/spec",
-    "types": [
-      "jasmine"
-    ]
+    "module": "CommonJS",
+    "types": ["jest", "node"],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"],
+      "@testing": ["src/testing/index.ts"],
+      "@testing/*": ["src/testing/*"],
+      "@testing/mocks": ["src/testing/mocks/index.ts"],
+      "@testing/mocks/components": ["src/testing/mocks/components/index.ts"],
+      "@testing/mocks/*": ["src/testing/mocks/*"],
+      "@testing/fixtures": ["src/testing/fixtures/index.ts"],
+      "@testing/fixtures/*": ["src/testing/fixtures/*"],
+      "@testing/helpers": ["src/testing/helpers/index.ts"],
+      "@testing/helpers/*": ["src/testing/helpers/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
+  "files": ["src/test.ts", "src/polyfills.ts"],
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.test.ts",
+    "src/**/*.d.ts",
+    "src/testing/**/*"
   ]
 }

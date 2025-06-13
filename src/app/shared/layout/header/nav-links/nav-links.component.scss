@@ -1,0 +1,251 @@
+@use "abstracts/mixins" as *;
+@use "abstracts/variables" as *;
+
+// Core variables
+$nav-link-padding: var(--space-md, 1rem);
+$nav-link-mobile-padding: 0.875rem;
+$nav-underline-height: 2px;
+$nav-border-radius: 0.5rem;
+$nav-transition-duration: 0.3s;
+$nav-mobile-transition-duration: 0.25s;
+$nav-easing: cubic-bezier(0.4, 0, 0.2, 1);
+$nav-hover-scale: 1.02;
+$nav-active-scale: 0.98;
+$mobile-breakpoint: 768px;
+
+// Interactive states mixin
+@mixin nav-link-interactive {
+  @include transition(background-color, color, transform, box-shadow);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale($nav-active-scale);
+  }
+}
+
+// Underline effect mixin
+@mixin nav-underline-effect {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: $nav-underline-height;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary, var(--color-primary)) 100%
+  );
+  border-radius: $nav-underline-height;
+  transform: translateX(-50%);
+  transition: width $nav-transition-duration $nav-easing,
+    opacity $nav-transition-duration $nav-easing;
+}
+
+// Mobile styles mixin
+@mixin mobile-nav-styles {
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+
+  a {
+    width: 100%;
+    text-align: left;
+    padding: $nav-link-mobile-padding var(--space-md, 0.5rem);
+    border-radius: 0;
+    margin: 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid
+        var(--border-color-subtle, rgba(255, 255, 255, 0.1));
+    }
+
+    &:hover {
+      background-color: var(--hover-bg, rgba(255, 255, 255, 0.08));
+      padding-left: var(--space-xl, 2rem);
+      transform: translateX(0) scale(1);
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &.active {
+      background: linear-gradient(
+        90deg,
+        var(--accent-bg, rgba(var(--color-primary-rgb, 74, 70, 229), 0.15)) 0%,
+
+        transparent 100%
+      );
+      border-left: 3px solid var(--color-primary);
+      color: var(--color-primary);
+      font-weight: 600;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm, 0.5rem);
+
+  a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: $nav-link-padding;
+    position: relative;
+    border-radius: $nav-border-radius;
+    white-space: nowrap;
+
+    @include nav-link-interactive;
+
+    &::after {
+      @include nav-underline-effect;
+    }
+
+    &:hover {
+      transform: scale($nav-hover-scale);
+
+      &::after {
+        width: 80%;
+        opacity: 1;
+      }
+
+      &:not(.disabled) {
+        color: var(--color-secondary);
+      }
+    }
+
+    &.active {
+      color: var(--color-secondary);
+      font-weight: 600;
+
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  // Mobile open state 
+  &.mobile-open {
+    @include mobile-nav-styles;
+
+    a {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideInMobile $nav-mobile-transition-duration $nav-easing
+        forwards;
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          animation-delay: 0.05s * $i;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+    padding: 0;
+
+    @include mobile-nav-styles; // basic mobile styles
+
+    a {
+      transition: background-color $nav-mobile-transition-duration $nav-easing,
+        padding-left $nav-mobile-transition-duration $nav-easing,
+        color $nav-mobile-transition-duration $nav-easing,
+        transform $nav-mobile-transition-duration $nav-easing;
+
+      &:hover {
+        padding-left: var(--space-lg, 1.5rem);
+        transform: translateX(4px);
+      }
+    }
+
+    &:not(.mobile-open) {
+      visibility: hidden;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &.mobile-open a {
+      padding: 1rem var(--space-md, 1rem);
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@keyframes slideInMobile {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(2px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideOutMobileFast {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0) scale(0.95);
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .nav-links * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Dark mode optimizations
+@media (prefers-color-scheme: dark) {
+  a.mobile-open a:not(:last-child) {
+    border-bottom-color: var(--border-color-dark, rgba(255, 255, 255, 0.15));
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .nav-links a {
+    &::after {
+      height: 3px;
+    }
+
+    &.active {
+      outline: 2px solid var(--color-secondary);
+      outline-offset: -2px;
+    }
+  }
+}
