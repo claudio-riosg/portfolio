@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IconComponent } from './svg-icon.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SvgIconLoaderService } from '../../../core/services/svg-icon-loader.service';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { sanitizerMock, iconLoaderMock } from '@testing/helpers/svg-icon.mocks';
 
 describe('IconComponent', () => {
   let component: IconComponent;
   let fixture: ComponentFixture<IconComponent>;
-  let sanitizerMock: { bypassSecurityTrustResourceUrl: jest.Mock };
 
   beforeEach(async () => {
-    sanitizerMock = {
-      bypassSecurityTrustResourceUrl: jest.fn().mockReturnValue('safe-resource-url')
-    };
-
     await TestBed.configureTestingModule({
       imports: [IconComponent],
       providers: [
-        { provide: DomSanitizer, useValue: sanitizerMock }
-      ]
+        provideHttpClientTesting(),
+        { provide: DomSanitizer, useValue: sanitizerMock },
+        { provide: SvgIconLoaderService, useValue: iconLoaderMock },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(IconComponent);
@@ -28,12 +28,7 @@ describe('IconComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should sanitize the sprite path', () => {
-    expect(sanitizerMock.bypassSecurityTrustResourceUrl).toHaveBeenCalled();
-    expect(component.basePath()).toBe('safe-resource-url');
-  });
-
-  it('should use default values when not provided', () => {
+  it('should use default config values', () => {
     const defaultConfig = component.currentConfig();
     expect(defaultConfig.spritePath).toBe('icons/sprite.svg');
     expect(defaultConfig.size).toBe('24px');
@@ -55,11 +50,8 @@ describe('IconComponent', () => {
       hoverable: false,
       darkMode: true
     };
-    
     fixture.componentRef.setInput('config', customConfig);
-    
     fixture.detectChanges();
-    
     const resultConfig = component.currentConfig();
     expect(resultConfig.name).toBe('test-icon');
     expect(resultConfig.spritePath).toBe('custom/path.svg');
@@ -69,5 +61,19 @@ describe('IconComponent', () => {
     expect(resultConfig.strokeWidth).toBe('2');
     expect(resultConfig.hoverable).toBe(false);
     expect(resultConfig.darkMode).toBe(true);
+  });
+
+  it('should call loadIcon when external is true', () => {
+    fixture.componentRef.setInput('external', true);
+    fixture.componentRef.setInput('config', { name: 'angular' });
+    fixture.detectChanges();
+    expect(iconLoaderMock.loadIcon).toHaveBeenCalledWith('angular.svg', 'icons', '24px', 'currentColor');
+  });
+
+  it('should call loadSprite when spriteExternal is true', () => {
+    fixture.componentRef.setInput('spriteExternal', true);
+    fixture.componentRef.setInput('config', { name: 'angular', spritePath: '/icons/sprite.svg' });
+    fixture.detectChanges();
+    expect(iconLoaderMock.loadSprite).toHaveBeenCalledWith('/icons/sprite.svg');
   });
 });
