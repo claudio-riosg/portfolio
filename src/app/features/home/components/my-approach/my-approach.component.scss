@@ -125,14 +125,14 @@
       }
 
       .icon-wrapper {
-        transform: scale(1.1);
+        transform: scale(1.15);
         
         .icon-bg-effect {
           opacity: 1;
           transform: scale(1.0);
         }
         .icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.2) rotate(8deg);
         }
       }
 
@@ -162,7 +162,8 @@
       height: var(--icon-wrapper-size, 72px);
       margin: 0 auto var(--space-lg, 1.5rem);
       border-radius: var(--icon-wrapper-border-radius, 16px);
-      @include flex-center;
+      display: grid;
+      place-items: center;
       transition: transform var(--transition-duration-md, 0.4s) var(--transition-easing-standard); 
       z-index: 1;
       background: var(--icon-bg-primary);
@@ -182,8 +183,8 @@
       }
 
       .icon {
-        width: var(--icon-size, 32px);
-        height: var(--icon-size, 32px);
+        width: var(--icon-size, 40px);
+        height: var(--icon-size, 40px);
         position: relative;
         z-index: 2;
         color: var(--icon-color-primary);
