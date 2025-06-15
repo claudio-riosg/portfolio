@@ -29,12 +29,5 @@ export const APP_ROUTES: Routes = [
     data: { preload: true },
     loadChildren: () =>
       import('./features/about/about.routes').then((m) => m.ABOUT_ROUTES),
-  },
-    {
-    path: 'blog',
-    data: { preload: true },
-    loadChildren: () =>
-      import('./features/contact/contact.routes').then((m) => m.CONTACT_ROUTES),
-  },
-
+  }
 ];
