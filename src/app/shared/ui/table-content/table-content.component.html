@@ -1,16 +1,16 @@
-<div class="table-container">
-  <div class="table-row header">
+<div class="table-container" role="table" aria-label="Contact Information">
+  <div class="table-row header" role="row">
     @for (header of headers; track $index) {
-      <div class="table-cell" [style.flex]="columnWidths[$index] || '1'">
+      <div class="table-cell" role="columnheader" [style.flex]="columnWidths[$index] || '1'">
         {{ header }}
       </div>
     }
   </div>
   
   @for (row of rows; track $index) {
-    <div class="table-row">
+    <div class="table-row" role="row">
       @for (cell of row; track $index) {
-        <div class="table-cell" [style.flex]="columnWidths[$index] || '1'">
+        <div class="table-cell" role="cell" [style.flex]="columnWidths[$index] || '1'">
           @if (cell.link) {
             <a [href]="cell.link" target="_blank" rel="noopener noreferrer">{{ cell.text }}</a>
           } @else {
