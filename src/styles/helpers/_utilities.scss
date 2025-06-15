@@ -9,3 +9,13 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+.title-gradient {
+  background: linear-gradient(90deg, var(--color-primary, #4f46e5), var(--color-secondary, #ec4899));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+}
