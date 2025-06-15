@@ -10,16 +10,6 @@
   padding-bottom: var(--space-sm);
 }
 
-.title-gradient {
-  background: linear-gradient(90deg, var(--color-primary, #4f46e5), var(--color-secondary, #ec4899));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-  position: relative;
-}
-
 .contact-description {
   font-size: var(--font-size-md, 1.125rem);
   color: var(--color-text-secondary, #d1d5db);
@@ -49,4 +39,16 @@
   color: var(--color-text-secondary, #d1d5db);
   font-style: italic;
   margin-top: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: calc(var(--text-base) * 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: calc(var(--text-base) * 1.5);
+  }
 }
