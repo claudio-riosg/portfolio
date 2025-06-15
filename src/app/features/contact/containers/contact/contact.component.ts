@@ -9,7 +9,6 @@ import { FloatingIslandBackgroundComponent } from '../../../../shared/layout/flo
   selector: 'app-contact',
   standalone: true,
   imports: [
-    TocComponent,
     ContactInfoComponent,
     SocialMediaInfoComponent,
     FloatingIslandBackgroundComponent,
@@ -27,10 +26,16 @@ export class ContactComponent {
   contactInfo: WritableSignal<TableInfo> = signal({
     headers: ['Contact', 'Detail'],
     rows: [
-      [{ text: 'Address' }, { text: 'Calgary, Alberta, Canada' }],
-      [{ text: 'Timezone' }, { text: 'UTM/GMT-6:00' }],
       [
-        { text: 'E-mail' },
+        { text: 'Address', icon: 'location' },
+        { text: 'Calgary, Alberta, Canada' }
+      ],
+      [
+        { text: 'Timezone', icon: 'timezone' },
+        { text: 'UTM/GMT-6:00' }
+      ],
+      [
+        { text: 'E-mail', icon: 'email' },
         {
           text: 'connect.claudioriosgajardo@gmail.com',
           link: 'mailto:connect.claudioriosgajardo@gmail.com',
@@ -44,17 +49,20 @@ export class ContactComponent {
     headers: ['Social Media', 'Profile URL'],
     rows: [
       [
-        { text: 'LinkedIn' },
+        { text: 'LinkedIn', icon: 'linkedin' },
         {
           text: 'linkedin.com/in/claudio-rios-gajardo',
           link: 'https://www.linkedin.com/in/claudio-rios-gajardo/',
         },
       ],
       [
-        { text: 'Twitter' },
+        { text: 'Twitter', icon: 'twitter' },
         { text: 'x.com/---', link: '-------' },
       ],
-      [{ text: 'GitHub' }, { text: 'github.com/claudiorios', link: '------' }],
+      [
+        { text: 'GitHub', icon: 'github' },
+        { text: 'github.com/claudiorios', link: '------' },
+      ],
     ],
     columnWidths: ['1', '2'],
   });

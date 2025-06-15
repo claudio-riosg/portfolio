@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { IconComponent } from '../svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-table-content',
-  imports: [],
+  imports: [IconComponent],
   standalone: true,
   templateUrl: './table-content.component.html',
   styleUrl: './table-content.component.scss'

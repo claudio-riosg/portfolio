@@ -13,7 +13,3 @@ svg {
 .dark {
   color: var(--dark-text-color, #333);
 }
-.hoverable:hover {
-  fill: var(--hover-icon-color);
-  color: var(--hover-text-color);
-}

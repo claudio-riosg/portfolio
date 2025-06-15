@@ -1,15 +1,23 @@
 .social-section {
+  margin-top: var(--space-xxl);
   .section-title {
-    font-size: calc(var(--text-base) * 1.8);
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--space-md);
+    font-size: var(--font-size-h3, 2.25rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-heading, #f3f4f6);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
   }
   
   .section-description {
-    font-size: var(--text-md);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-md);
-    line-height: 1.6;
+    font-size: var(--font-size-md, 1.125rem);
+    color: var(--color-text-secondary, #d1d5db);
+    margin-bottom: var(--space-lg);
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: calc(var(--text-base) * 1.5);
   }
 }

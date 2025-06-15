@@ -1,34 +1,47 @@
 .table-container {
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border: 1px solid var(--color-border-global, #374151);
+  border-radius: 16px;
   overflow: hidden;
-  margin: var(--space-md) 0;
+  margin: var(--space-lg) 0;
+  background: var(--card-bg, rgba(255,255,255,0.02));
+  box-shadow: var(--shadow-card-default, none);
+  backdrop-filter: blur(2px);
 }
 
 .table-row {
   display: flex;
-  padding: var(--space-md);
-  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid var(--color-border-global, #374151);
+  background: transparent;
+  align-items: center;
+  transition: background 0.2s;
   
   &:last-child {
     border-bottom: none;
   }
   
   &.header {
-    background-color: var(--color-bg-secondary);
-    font-weight: 600;
+    background-color: var(--color-bg-secondary, #2d2d2d);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-secondary, #fe8198);
+    font-size: var(--font-size-md, 1.125rem);
+  }
+  
+  &:not(.header):hover {
+    background: var(--hover-bg, rgba(255,255,255,0.05));
   }
 }
 
 .table-cell {
-  padding: 0 var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-base, 1rem);
   
   a {
-    color: var(--color-primary);
+    color: var(--color-primary, #818cf8);
     transition: color 0.3s ease;
     
     &:hover {
-      color: var(--color-secondary);
+      color: var(--color-secondary, #fe8198);
       text-decoration: underline;
     }
   }
@@ -38,6 +51,7 @@
   .table-row {
     flex-direction: column;
     gap: var(--space-xs);
+    padding: var(--space-md);
   }
   
   .table-row.header {
@@ -49,8 +63,40 @@
     
     &::before {
       content: attr(data-label);
-      font-weight: 600;
+      font-weight: var(--font-weight-semibold, 600);
       margin-right: var(--space-sm);
     }
   }
+}
+
+.icon-cell {
+  text-align: center;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  padding-right: 0;
+}
+
+.icon-cell-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-cell app-icon {
+  width: 32px;
+  height: 32px;
+  transition: color 0.2s;
+}
+
+.icon-cell:hover app-icon {
+  color: var(--color-primary, #818cf8);
+}
+
+.icon-hoverable:hover app-icon svg {
+  color: var(--color-primary, #818cf8) !important;
+  fill: var(--color-primary, #818cf8) !important;
+}
+
+.icon-cell app-icon svg {
+  fill: currentColor;
+  color: currentColor;
 }

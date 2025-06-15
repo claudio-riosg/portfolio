@@ -1,4 +1,5 @@
 import { of } from 'rxjs';
+import { signal } from '@angular/core';
 
 export const sanitizerMock = {
   bypassSecurityTrustResourceUrl: jest.fn().mockReturnValue('safe-resource-url'),
@@ -7,5 +8,6 @@ export const sanitizerMock = {
 
 export const iconLoaderMock = {
   loadIcon: jest.fn().mockReturnValue(of('safe-html')),
-  loadSprite: jest.fn().mockReturnValue(of('safe-html'))
+  loadSprite: jest.fn().mockReturnValue(of('safe-html')),
+  spriteReady: signal(true),
 }; 
