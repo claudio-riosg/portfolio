@@ -4,7 +4,7 @@
   @if (spriteExternal() && spriteHtml()) {
     <span style="display:none" [innerHTML]="spriteHtml()"></span>
   }
-  <svg [attr.width]="currentConfig().size" [attr.height]="currentConfig().size" fill="currentColor" [attr.stroke]="currentConfig().strokeColor === 'none' ? null : currentConfig().strokeColor" [attr.stroke-width]="currentConfig().strokeWidth" [class.hoverable]="currentConfig().hoverable" [class.dark]="currentConfig().darkMode" role="img" [attr.aria-label]="currentConfig().name + ' icon'" (error)="onError($event)">
+  <svg [attr.width]="currentConfig().size" [attr.height]="currentConfig().size" fill="currentColor" [attr.stroke]="currentConfig().strokeColor === 'none' ? null : currentConfig().strokeColor" [attr.stroke-width]="currentConfig().strokeWidth" [class.hoverable]="currentConfig().hoverable" [class.dark]="currentConfig().darkMode" role="img" [attr.aria-label]="currentConfig().name + ' icon'">
     <use [attr.xlink:href]="'#' + currentConfig().name" />
   </svg>
 }

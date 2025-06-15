@@ -47,6 +47,21 @@ export class IconComponent {
           )
           .subscribe(html => this.svgHtml.set(html));
       } else if (this.spriteExternal()) {
+        // Wait for spriteReady signal
+        if (!this.iconLoader.spriteReady()) {
+          return;
+        }
+        //  check if the sprite is already loaded via object in index.html
+        const spriteId = config.spritePath.split('/').pop()?.split('.')[0];
+        const spriteObject = document.getElementById(`${spriteId}-svg`);
+        if (spriteObject && spriteObject instanceof HTMLObjectElement && spriteObject.contentDocument) {
+          const svgContent = spriteObject.contentDocument.documentElement;
+          if (svgContent) {
+            this.spriteHtml.set(this.sanitizer.bypassSecurityTrustHtml(svgContent.outerHTML));
+            return;
+          }
+        }
+        // Fallback to service loading
         this.iconLoader
           .loadSprite(config.spritePath)
           .subscribe(html => this.spriteHtml.set(html));
@@ -74,9 +89,5 @@ export class IconComponent {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.currentConfig().spritePath);
   });
 
-  // Fallback: Si el icono no se carga, mostrar un SVG genérico
-  onError(event: Event) {
-    const svg = event.target as SVGElement;
-    svg.innerHTML = `<rect width='100%' height='100%' fill='#eee'/><text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='10'>?</text>`;
-  }
+
 }

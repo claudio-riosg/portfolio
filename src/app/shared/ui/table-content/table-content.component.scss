@@ -23,7 +23,7 @@
   &.header {
     background-color: var(--color-bg-secondary, #2d2d2d);
     font-weight: var(--font-weight-bold, 700);
-    color: var(--color-heading, #f3f4f6);
+    color: var(--color-secondary, #fe8198);
     font-size: var(--font-size-md, 1.125rem);
   }
   
@@ -35,7 +35,6 @@
 .table-cell {
   padding: var(--space-md) var(--space-lg);
   font-size: var(--font-size-base, 1rem);
-  color: var(--color-text-primary, #f3f4f6);
   
   a {
     color: var(--color-primary, #818cf8);
@@ -68,4 +67,36 @@
       margin-right: var(--space-sm);
     }
   }
+}
+
+.icon-cell {
+  text-align: center;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  padding-right: 0;
+}
+
+.icon-cell-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-cell app-icon {
+  width: 32px;
+  height: 32px;
+  transition: color 0.2s;
+}
+
+.icon-cell:hover app-icon {
+  color: var(--color-primary, #818cf8);
+}
+
+.icon-hoverable:hover app-icon svg {
+  color: var(--color-primary, #818cf8) !important;
+  fill: var(--color-primary, #818cf8) !important;
+}
+
+.icon-cell app-icon svg {
+  fill: currentColor;
+  color: currentColor;
 }

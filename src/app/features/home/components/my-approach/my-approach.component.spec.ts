@@ -2,18 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { SvgIconLoaderService } from '../../../../core/services/svg-icon-loader.service';
-
 import { MyApproachComponent } from './my-approach.component';
-import { of } from 'rxjs';
+import { iconLoaderMock } from '@testing/helpers/svg-icon.mocks';
 
 describe('MyApproachComponent', () => {
   let component: MyApproachComponent;
   let fixture: ComponentFixture<MyApproachComponent>;
-
-  const svgIconLoaderServiceMock = {
-    loadSprite: jest.fn().mockReturnValue(of(null)),
-    loadIcon: jest.fn().mockReturnValue(of(null)),
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +17,7 @@ describe('MyApproachComponent', () => {
         provideHttpClientTesting(),
         {
           provide: SvgIconLoaderService,
-          useValue: svgIconLoaderServiceMock,
+          useValue: iconLoaderMock,
         },
       ],
     }).compileComponents();

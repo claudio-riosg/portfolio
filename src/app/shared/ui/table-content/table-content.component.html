@@ -7,11 +7,18 @@
     }
   </div>
   
-  @for (row of rows; track $index) {
+  @for (row of rows; let rowIndex = $index; track rowIndex) {
     <div class="table-row" role="row">
-      @for (cell of row; track $index) {
-        <div class="table-cell" role="cell" [style.flex]="columnWidths[$index] || '1'">
-          @if (cell.link) {
+      @for (cell of row; let cellIndex = $index; track cellIndex) {
+        <div class="table-cell" role="cell" [style.flex]="columnWidths[cellIndex] || '1'" [class.icon-cell]="cellIndex === 0 && cell.icon" [class.icon-hoverable]="cellIndex === 0 && cell.icon">
+          @if (cellIndex === 0 && cell.icon) {
+            <div class="icon-cell-wrapper">
+              <app-icon
+                [config]="{ name: cell.icon, spritePath: 'icons/sprite-media.svg', size: '32px', color: 'currentColor' }"
+                [spriteExternal]="true"
+              ></app-icon>
+            </div>
+          } @else if (cell.link) {
             <a [href]="cell.link" target="_blank" rel="noopener noreferrer">{{ cell.text }}</a>
           } @else {
             {{ cell.text }}
