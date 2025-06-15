@@ -17,14 +17,8 @@
   
   <div class="techs-grid">
     @for (tech of filteredTechs(); track tech.name) {
-      <div class="tech-card">
-        <img
-          [src]="'icons/' + tech.icon"
-          [alt]="tech.name + ' icon'"
-          width="40"
-          height="40"
-          loading="lazy"
-        >
+      <div class="tech-card" [style.--hover-color]="tech.color">
+        <app-icon [config]="{ name: tech.icon.replace('.svg', ''), size: '40px', spritePath: '/icons/sprite.svg' }" [spriteExternal]="true"></app-icon>
         <span>{{ tech.name }}</span>
       </div>
     }

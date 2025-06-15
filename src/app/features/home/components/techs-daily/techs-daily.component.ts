@@ -1,11 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../../core/services/theme.service'
+import { IconComponent } from '../../../../shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-techs-daily',
   standalone: true,
-  imports: [CommonModule ],
+  imports: [CommonModule, IconComponent ],
   templateUrl: './techs-daily.component.html',
   styleUrls: ['./techs-daily.component.scss'],
 })
@@ -15,10 +16,10 @@ export class TechsDailyComponent {
 
   // Señal reactiva para las tecnologías
   technologies = signal([
-    { name: 'Angular', icon: 'angular.svg', category: 'frontend',color: '#0F0F11' },
+    { name: 'Angular', icon: 'angular.svg', category: 'frontend',color: '#8514f5' },
     { name: 'TypeScript', icon: 'typescript.svg', category: 'Language',color:'#3178C6'},
     { name: 'Node.js', icon: 'nodejs.svg', category: 'backend', color:'#5FA04E'},
-    { name: 'RxJS', icon: 'rxjs.svg', category: 'frontend', color:'#B7178C' },
+    { name: 'RxJS', icon: 'reactivex.svg', category: 'frontend', color:'#B7178C' },
     { name: 'Tailwind', icon: 'tailwindcss.svg', category: 'Styling',color: '#06B6D4' },
     { name: 'Docker', icon: 'docker.svg', category: 'devops', color: '#2496ED'}
   ]);

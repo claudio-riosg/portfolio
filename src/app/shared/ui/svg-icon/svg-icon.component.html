@@ -1,13 +1,10 @@
-    <svg
-      [attr.width]="currentConfig().size"
-      [attr.height]="currentConfig().size"
-      [attr.fill]="currentConfig().color === 'currentColor' ? null : currentConfig().color"
-      [attr.stroke]="currentConfig().strokeColor === 'none' ? null : currentConfig().strokeColor"
-      [attr.stroke-width]="currentConfig().strokeWidth"
-      [class.hoverable]="currentConfig().hoverable"
-      [class.dark]="currentConfig().darkMode"
-      role="img"
-      [attr.aria-label]="currentConfig().name + ' icon'"
-    >
-      <use [attr.xlink:href]="basePath() + '#' + currentConfig().name" />
-    </svg>
+@if (external()) {
+  <span [innerHTML]="svgHtml()"></span>
+} @else {
+  @if (spriteExternal() && spriteHtml()) {
+    <span style="display:none" [innerHTML]="spriteHtml()"></span>
+  }
+  <svg [attr.width]="currentConfig().size" [attr.height]="currentConfig().size" fill="currentColor" [attr.stroke]="currentConfig().strokeColor === 'none' ? null : currentConfig().strokeColor" [attr.stroke-width]="currentConfig().strokeWidth" [class.hoverable]="currentConfig().hoverable" [class.dark]="currentConfig().darkMode" role="img" [attr.aria-label]="currentConfig().name + ' icon'" (error)="onError($event)">
+    <use [attr.xlink:href]="'#' + currentConfig().name" />
+  </svg>
+}
