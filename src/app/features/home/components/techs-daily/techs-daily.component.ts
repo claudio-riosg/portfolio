@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../../core/services/theme.service'
 import { IconComponent } from '../../../../shared/ui/svg-icon/svg-icon.component';
@@ -9,6 +9,7 @@ import { IconComponent } from '../../../../shared/ui/svg-icon/svg-icon.component
   imports: [CommonModule, IconComponent ],
   templateUrl: './techs-daily.component.html',
   styleUrls: ['./techs-daily.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TechsDailyComponent {
   private themeService = inject(ThemeService);
