@@ -24,17 +24,12 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('./features/blog/blog.routes').then((m) => m.BLOG_ROUTES),
   },
-    {
+  {
     path: 'about',
     data: { preload: true },
     loadChildren: () =>
       import('./features/about/about.routes').then((m) => m.ABOUT_ROUTES),
   },
-    {
-    path: 'blog',
-    data: { preload: true },
-    loadChildren: () =>
-      import('./features/contact/contact.routes').then((m) => m.CONTACT_ROUTES),
-  },
+  // Removed duplicate 'blog' route that incorrectly loaded contact module
 
 ];
