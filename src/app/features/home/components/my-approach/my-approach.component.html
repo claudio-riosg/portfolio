@@ -11,57 +11,20 @@
     </div>
 
     <div class="approach-grid">
-      <div class="approach-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="card-background-glow primary-glow"></div>
-        <div class="icon-wrapper primary-icon">
-          <div class="icon-bg-effect"></div>
-          <app-icon class="icon" [config]="{ name: 'icon-clean-code', spritePath: '/icons/approach-sprite.svg' }" [spriteExternal]="true"></app-icon>
+      @for (card of approachCards; track card.iconConfig.name; let i = $index) {
+        <div class="approach-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="100 * (i + 1)">
+          <div class="card-background-glow {{card.colorClass}}-glow"></div>
+          <div class="icon-wrapper {{card.colorClass}}-icon">
+            <div class="icon-bg-effect"></div>
+            <app-icon class="icon" [config]="card.iconConfig" [spriteExternal]="true"></app-icon>
+          </div>
+          <h3 class="card-title">{{ card.title }}</h3>
+          <p class="card-description">
+            {{ card.description }}
+          </p>
+          <div class="card-border-effect"></div>
         </div>
-        <h3 class="card-title">Clean & Robust Code</h3>
-        <p class="card-description">
-          I prioritize writing clean, maintainable, and well-tested code, ensuring robustness and security at every layer.
-        </p>
-        <div class="card-border-effect"></div>
-      </div>
-
-      <div class="approach-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="card-background-glow secondary-glow"></div>
-        <div class="icon-wrapper secondary-icon">
-          <div class="icon-bg-effect"></div>
-          <app-icon class="icon" [config]="{ name: 'icon-scalable', spritePath: '/icons/approach-sprite.svg' }" [spriteExternal]="true"></app-icon>
-        </div>
-        <h3 class="card-title">Scalable Architecture</h3>
-        <p class="card-description">
-          I design solutions that grow with business needs, building flexible and efficient systems capable of handling demand.
-        </p>
-        <div class="card-border-effect"></div>
-      </div>
-
-      <div class="approach-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="card-background-glow accent-glow"></div>
-        <div class="icon-wrapper accent-icon">
-          <div class="icon-bg-effect"></div>
-          <app-icon class="icon" [config]="{ name: 'icon-performance', spritePath: '/icons/approach-sprite.svg' }" [spriteExternal]="true"></app-icon>
-        </div>
-        <h3 class="card-title">Performance Focused</h3>
-        <p class="card-description">
-          Continuous optimization to deliver smooth and fast user experiences, prioritizing efficiency and interactivity.
-        </p>
-        <div class="card-border-effect"></div>
-      </div>
-
-      <div class="approach-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="card-background-glow tertiary-glow"></div>
-        <div class="icon-wrapper tertiary-icon">
-          <div class="icon-bg-effect"></div>
-          <app-icon class="icon" [config]="{ name: 'icon-learning', spritePath: '/icons/approach-sprite.svg' }" [spriteExternal]="true"></app-icon>
-        </div>
-        <h3 class="card-title">Continuous Learning</h3>
-        <p class="card-description">
-          I stay up-to-date with the latest trends and technologies, adopting new tools for innovative solutions.
-        </p>
-        <div class="card-border-effect"></div>
-      </div>
+      }
     </div>
   </div>
 </section>
