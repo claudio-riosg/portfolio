@@ -2,7 +2,7 @@
 @use "abstracts/variables" as *;
 
 // Core variables
-$nav-link-padding: var(--space-md, 1rem);
+$nav-link-padding: var(--space-xs, 1rem);
 $nav-link-mobile-padding: 0.875rem;
 $nav-underline-height: 2px;
 $nav-border-radius: 0.5rem;
@@ -98,7 +98,7 @@ $mobile-breakpoint: 768px;
   gap: var(--space-sm, 0.5rem);
 
   a {
-    color: var(--color-text-primary);
+    color: var(--color-text-secondary, rgba(255, 255, 255, 0.8));
     text-decoration: none;
     font-weight: 500;
     padding: $nav-link-padding;

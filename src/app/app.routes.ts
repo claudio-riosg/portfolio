@@ -25,9 +25,9 @@ export const APP_ROUTES: Routes = [
       import('./features/blog/blog.routes').then((m) => m.BLOG_ROUTES),
   },
     {
-    path: 'about',
+    path: 'experience',
     data: { preload: true },
     loadChildren: () =>
-      import('./features/about/about.routes').then((m) => m.ABOUT_ROUTES),
+      import('./features/experience/experience.routes').then((m) => m.EXPERIENCE_ROUTES)
   }
 ];

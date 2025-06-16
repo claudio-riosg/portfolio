@@ -41,7 +41,7 @@ export class NavLinksComponent {
   @Output() linkClick = new EventEmitter<void>();
   links: NavLink[] = [
     { path: '/blog', name: 'Blog' },
-    { path: '/about', name: 'About' },
+    { path: '/experience', name: 'Experience' },
     { path: '/contact', name: 'Contact' },
   ];
 }

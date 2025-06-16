@@ -1,0 +1,15 @@
+<div class="experience-card">
+  <div class="experience-header">
+    <h3 class="company">{{ experience.company }}</h3>
+    <div class="role-period">
+      <span class="role">{{ experience.title }}</span>
+      <span class="period">({{ experience.period }})</span>
+    </div>
+  </div>
+  <p class="summary">{{ experience.summary }}</p>
+  <ul class="details">
+    @for (detail of experience.details; track $index) {
+      <li>{{ detail }}</li>
+    }
+  </ul>
+</div> 
