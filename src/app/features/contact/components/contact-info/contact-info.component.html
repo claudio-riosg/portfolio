@@ -1,7 +1,7 @@
-<div class="contact-section">
+<div class="contact-section" appScrollReveal [delay]="0">
   <h1 class="contact-title"><span class="title-gradient">Contact</span></h1>
 
-  <div class="contact-content">
+  <div class="contact-content" appScrollReveal [delay]="100">
     <p class="contact-description">
       Get in touch with me anytime, through social media or e-mail.
     </p>
@@ -22,10 +22,12 @@
       [headers]="contactInfo().headers"
       [rows]="contactInfo().rows"
       [columnWidths]="contactInfo().columnWidths"
+      class="contact-table"
+      appScrollReveal [delay]="200"
     >
     </app-table-content>
 
-    <p class="contact-footer">
+    <p class="contact-footer" appScrollReveal [delay]="300">
       If you need any other information, such as my phone number, please do
       not hesitate to send me an email first.
     </p>

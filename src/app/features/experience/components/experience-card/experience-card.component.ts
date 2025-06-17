@@ -1,15 +1,16 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorkExperience } from '@app/core/models/work-experience.interface';
+import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-experience-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollRevealDirective],
   templateUrl: './experience-card.component.html',
   styleUrl: './experience-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExperienceCardComponent {
-  @Input({ required: true }) experience!: WorkExperience;
+  experience = input.required<WorkExperience>();
 } 

@@ -1,15 +1,39 @@
 <div class="experience-card">
-  <div class="experience-header">
-    <h3 class="company">{{ experience.company }}</h3>
+  <!-- Header with company and role info -->
+  <div 
+    class="experience-header"
+    appScrollReveal
+    [threshold]="0.3"
+    [delay]="50"
+  >
+    <h3 class="company">{{ experience().company }}</h3>
     <div class="role-period">
-      <span class="role">{{ experience.title }}</span>
-      <span class="period">({{ experience.period }})</span>
+      <span class="role">{{ experience().title }}</span>
+      <span class="period">({{ experience().period }})</span>
     </div>
   </div>
-  <p class="summary">{{ experience.summary }}</p>
+  
+  <!-- Summary section -->
+  <p 
+    class="summary"
+    appScrollReveal
+    [threshold]="0.4"
+    [delay]="100"
+  >
+    {{ experience().summary }}
+  </p>
+  
+  <!-- Details list with staggered animation -->
   <ul class="details">
-    @for (detail of experience.details; track $index) {
-      <li>{{ detail }}</li>
+    @for (detail of experience().details; track $index; let i = $index) {
+      <li
+        appScrollReveal
+        [threshold]="0.5"
+        [delay]="150 + (i * 50)"
+        [staggerDelay]="50"
+      >
+        {{ detail }}
+      </li>
     }
   </ul>
 </div> 

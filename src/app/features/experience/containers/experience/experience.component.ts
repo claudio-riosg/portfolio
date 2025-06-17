@@ -1,15 +1,26 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ExperienceCardComponent } from '../../components/experience-card/experience-card.component';
 import { WorkExperience } from '@app/core/models/work-experience.interface';
+import { ThemeService } from '@app/core/services/theme.service';
+import { FloatingIslandBackgroundComponent } from '@app/shared/layout/floating-island-background/floating-island-background.component';
+import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-experience',
-  imports: [ExperienceCardComponent],
+  imports: [
+    ExperienceCardComponent, 
+    FloatingIslandBackgroundComponent,
+    ScrollRevealDirective
+  ],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExperienceComponent {
+
+  themeService = inject(ThemeService);
+  imageUrl = signal('images/stairs');
+  
   workExperiences: WorkExperience[] = [
     {
       company: 'UNICOMER',
@@ -24,19 +35,21 @@ export class ExperienceComponent {
         'Managed version control and CI/CD pipelines using GitLab and GitLab CI to ensure consistent and efficient deployments.',
         'Collaborated in Agile sprints, delivering key features on time and improving overall team productivity.'
       ]
-    },   {
+    },
+    {
       company: 'BANCO ESTADO | SII Group',
       title: 'FRONT-END Developer',
       period: 'MARCH 2021- JUNE 2022',
       summary: 'Developed new modules, improved existing features, and ensured high-quality code standards.',
       details: [
-        'Spearheaded the development of a new insurance module for Banco Estado’s mobile app, improving the functionality and user interface for a more intuitive customer experience.',
+        'Spearheaded the development of a new insurance module for Banco Estado mobile app, improving the functionality and user interface for a more intuitive customer experience.',
         'Implemented state management using NGXS and built reusable components with Angular 10.',
         'Ensured robust testing with Jasmine and Karma, improving code quality and reducing bugs.',
         'Integrated GitLab for version control and CI/CD, optimizing deployment processes.',
         'Worked in an Agile environment, contributing to sprint planning, retrospectives, and feature delivery.'
       ]
-    },   {
+    },
+    {
       company: 'IZYTECH',
       title: 'FULL-STACK DEVELOPER',
       period: 'DECEMBER 2020- MARCH 2021',
@@ -47,6 +60,6 @@ export class ExperienceComponent {
         'Managed databases in SQL Server hosted on AWS, ensuring efficient data storage and retrieval.',
         'Utilized Agile methodologies to enhance development workflows and project timelines.'
       ]
-    },
+    }
   ];
 }

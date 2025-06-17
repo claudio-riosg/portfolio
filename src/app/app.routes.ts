@@ -29,5 +29,6 @@ export const APP_ROUTES: Routes = [
     data: { preload: true },
     loadChildren: () =>
       import('./features/experience/experience.routes').then((m) => m.EXPERIENCE_ROUTES)
-  }
+  },
+   
 ];
