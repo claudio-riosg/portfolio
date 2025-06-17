@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExperienceCardComponent } from './experience-card.component';
 import { By } from '@angular/platform-browser';
 import { WorkExperience } from '@app/core/models/work-experience.interface';
+import { signal } from '@angular/core';
 
 describe('ExperienceCardComponent', () => {
   let component: ExperienceCardComponent;
@@ -25,7 +26,7 @@ describe('ExperienceCardComponent', () => {
     }).compileComponents();
     fixture = TestBed.createComponent(ExperienceCardComponent);
     component = fixture.componentInstance;
-    component.experience = mockExperience;
+    component.experience = signal(mockExperience) as any;
     fixture.detectChanges();
   });
 
