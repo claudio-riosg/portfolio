@@ -1,17 +1,17 @@
-<div class="social-section" appScrollReveal [delay]="0">
+<div class="social-section contact-card-wrapper" appScrollReveal [delay]="0">
   <h2 class="section-title"><span class="title-gradient">Social Media</span></h2>
-  <p class="section-description" appScrollReveal [delay]="100">
+  <p class="section-description contact-card-wrapper" appScrollReveal [delay]="100">
     If you want to find me on social media, maybe you can't find me hehe. I usually change my username on almost all platforms, 
     so it could be a bit hard find me, sorry.
   </p>
-  <p class="section-description" appScrollReveal [delay]="200">
+  <p class="section-description contact-card-wrapper" appScrollReveal [delay]="150">
     I've included direct links to the platforms I use sometimes:
   </p>
   <app-table-content
     [headers]="socialMediaInfo().headers"
     [rows]="socialMediaInfo().rows"
     [columnWidths]="socialMediaInfo().columnWidths"
-    class="social-table"
+    class="social-table contact-card-wrapper"
     appScrollReveal [delay]="300"
   >
   </app-table-content>
