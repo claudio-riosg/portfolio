@@ -1,5 +1,5 @@
 <section class="hero">
-  <div class="hero-content" @slideUp>
+  <div class="hero-content" appScrollReveal [delay]="0">
     <!-- Solo una animación por contenedor -->
     <h1 class="hero-title">
       Hi there, I'm <span class="highlight">Claudio Ríos</span>
@@ -10,12 +10,12 @@
       with, clean and modern technologies.
     </p>
 
-    <div class="hero-actions" @slideUp>
+    <div class="hero-actions">
       <app-button
         [config]="{ type: 'primary', size: 'md' }"
         (clicked)="onContactClick()"
       >
-        Let’s Talk
+        Let's Talk
       </app-button>
       <app-button
         [config]="{ type: 'transparent', size: 'md' }"
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="hero-visual" @fadeIn>
+  <div class="hero-visual" appScrollReveal [delay]="200">
     <!-- <app-animated-avatar
     [sensitivity]="20" 
     [clickEffect]="true"

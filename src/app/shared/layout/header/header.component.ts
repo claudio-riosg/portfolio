@@ -29,47 +29,30 @@ import { Subject, fromEvent, takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnDestroy {
-  readonly menuOpen = signal<boolean>(false);
-  readonly isScrolled = signal<boolean>(false);
+  readonly menuOpen = signal(false);
+  readonly isScrolled = signal(false);
   private readonly mobileBreakpoint = 768;
   private readonly destroy$ = new Subject<void>();
   private readonly windowWidth = signal(window.innerWidth);
 
-  readonly isMobileView = computed(() => {
-    return this.windowWidth() <= this.mobileBreakpoint;
-  });
+  readonly isMobileView = computed(() => this.windowWidth() <= this.mobileBreakpoint);
 
   constructor() {
-    // effect for handling body overflow based on menu state
-    // This effect will run whenever menuOpen changes
     effect(() => {
-      if (this.menuOpen()) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+      document.body.style.overflow = this.menuOpen() ? 'hidden' : '';
     });
 
-    fromEvent(window, 'resize')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.windowWidth.set(window.innerWidth);
-      });
-
-    fromEvent(window, 'scroll')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.isScrolled.set(window.scrollY > 10);
-      });
+    fromEvent(window, 'resize').pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.windowWidth.set(window.innerWidth);
+      if (!this.isMobileView() && this.menuOpen()) this.closeMenu();
+    });
+    fromEvent(window, 'scroll').pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.isScrolled.set(window.scrollY > 10);
+    });
   }
 
-  toggleMenu(): void {
-    this.menuOpen.update((value) => !value);
-  }
-
-  closeMenu(): void {
-    this.menuOpen.set(false);
-  }
+  toggleMenu(): void { this.menuOpen.update(v => !v); }
+  closeMenu(): void { this.menuOpen.set(false); }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
@@ -77,25 +60,11 @@ export class HeaderComponent implements OnDestroy {
     const header = target.closest('.header');
     const burger = target.closest('.burger');
     const navLink = target.closest('.nav-links a');
-
-    if (!header && !burger && !navLink && this.menuOpen()) {
-      this.closeMenu();
-    }
+    if (!header && !burger && !navLink && this.menuOpen()) this.closeMenu();
   }
 
   @HostListener('document:keydown.escape')
-  onEscapeKeydown(): void {
-    if (this.menuOpen()) {
-      this.closeMenu();
-    }
-  }
-
-  @HostListener('window:resize')
-  onWindowResize(): void {
-    if (this.isMobileView() === false && this.menuOpen()) {
-      this.closeMenu();
-    }
-  }
+  onEscapeKeydown(): void { if (this.menuOpen()) this.closeMenu(); }
 
   ngOnDestroy(): void {
     document.body.style.overflow = '';

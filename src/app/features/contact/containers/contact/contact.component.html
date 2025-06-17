@@ -1,7 +1,7 @@
 <app-floating-island-background [imageUrl]="imageUrl()" [isDarkTheme]="true" />
 <div class="page-container">
-  <section class="content-container">
-    <app-contact-info [contactInfo]="contactInfo()"></app-contact-info>
-    <app-social-media-info [socialMediaInfo]="socialMediaInfo()"></app-social-media-info>
+  <section class="content-container" appScrollReveal [staggerDelay]="120">
+    <app-contact-info [contactInfo]="contactInfo()" class="contact-section-child" appScrollReveal [delay]="0"></app-contact-info>
+    <app-social-media-info [socialMediaInfo]="socialMediaInfo()" class="social-section-child" appScrollReveal [delay]="200"></app-social-media-info>
   </section>
 </div>

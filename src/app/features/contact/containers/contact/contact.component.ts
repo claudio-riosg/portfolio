@@ -4,6 +4,7 @@ import { TableInfo } from '../../../../core/models/table-info.interface';
 import { ContactInfoComponent } from '../../components/contact-info/contact-info.component';
 import { SocialMediaInfoComponent } from '../../components/social-media-info/social-media-info.component';
 import { FloatingIslandBackgroundComponent } from '../../../../shared/layout/floating-island-background/floating-island-background.component';
+import { ScrollRevealDirective } from '../../../../core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-contact',
@@ -12,6 +13,7 @@ import { FloatingIslandBackgroundComponent } from '../../../../shared/layout/flo
     ContactInfoComponent,
     SocialMediaInfoComponent,
     FloatingIslandBackgroundComponent,
+    ScrollRevealDirective,
   ],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],

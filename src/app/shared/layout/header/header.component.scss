@@ -143,8 +143,8 @@ $burger-z-index: 110;
     max-width: none;
     background: linear-gradient(
       180deg,
-      var(--header-bg-mobile, var(--header-bg)) 0%,
-      var(--header-bg-mobile, var(--header-bg)) 90%,
+      var(--header-bg-mobile, rgba(255,255,255,0.97)) 0%,
+      var(--header-bg-mobile, rgba(255,255,255,0.97)) 90%,
       transparent 100%
     );
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -182,6 +182,7 @@ $burger-z-index: 110;
       visibility: visible;
       transform: translateY(0);
       padding: var(--space-lg, 1.5rem) var(--space-md, 1rem); 
+      background: var(--header-bg-mobile, rgba(255,255,255,0.97));
 
       &::before {
         height: 8px; // For a small space when opening
@@ -209,7 +210,7 @@ $burger-z-index: 110;
         transform 0.25s $transition-easing;
 
       > * {
-        animation: slideOutFast 0.15s $transition-easing forwards;
+        animation: slideOutFast 0.32s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
         animation-fill-mode: both;
       }
       @for $i from 1 through 4 {

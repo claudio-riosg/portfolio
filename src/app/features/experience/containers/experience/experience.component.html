@@ -1,15 +1,30 @@
+<app-floating-island-background [imageUrl]="imageUrl()" [isDarkTheme]="themeService.isDark()"></app-floating-island-background>
 <section class="experience-section">
   <div class="container">
-    <div class="section-header">
+    <!-- Animated header section -->
+    <div 
+      class="section-header"
+      appScrollReveal
+      [threshold]="0.1"
+      [delay]="100"
+    >
       <h2 class="section-title">
         <span class="title-gradient">Full-time Work Experience</span>
       </h2>
       <div class="title-decoration"></div>
     </div>
 
+    <!-- Experience cards list -->
     <div class="experience-list">
-      @for (exp of workExperiences; track exp.title) {
-        <app-experience-card [experience]="exp" />
+      @for (exp of workExperiences; track exp.title; let i = $index) {
+        <div
+          class="experience-card-wrapper"
+          appScrollReveal
+          [threshold]="0.1"
+          [delay]="200 + (i * 200)"
+        >
+          <app-experience-card [experience]="exp" />
+        </div>
       }
     </div>
   </div>

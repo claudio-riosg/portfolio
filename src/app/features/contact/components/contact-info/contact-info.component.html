@@ -1,13 +1,13 @@
-<div class="contact-section">
+<div class="contact-section contact-card-wrapper" appScrollReveal [delay]="0">
   <h1 class="contact-title"><span class="title-gradient">Contact</span></h1>
 
-  <div class="contact-content">
+  <div class="contact-content contact-card-wrapper" appScrollReveal [delay]="100">
     <p class="contact-description">
       Get in touch with me anytime, through social media or e-mail.
     </p>
 
     <p class="contact-note">
-      Just a friendly reminder that the information provided here is for
+      The information provided here is for
       <strong>business purposes only</strong>. If you have any questions, feel
       free to chat with me directly on my social media.
     </p>
@@ -22,10 +22,12 @@
       [headers]="contactInfo().headers"
       [rows]="contactInfo().rows"
       [columnWidths]="contactInfo().columnWidths"
+      class="contact-table contact-card-wrapper"
+      appScrollReveal [delay]="200"
     >
     </app-table-content>
 
-    <p class="contact-footer">
+    <p class="contact-footer contact-card-wrapper" appScrollReveal [delay]="300">
       If you need any other information, such as my phone number, please do
       not hesitate to send me an email first.
     </p>

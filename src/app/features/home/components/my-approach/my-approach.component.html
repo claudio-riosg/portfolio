@@ -12,7 +12,7 @@
 
     <div class="approach-grid">
       @for (card of approachCards; track card.iconConfig.name; let i = $index) {
-        <div class="approach-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="100 * (i + 1)">
+        <div class="approach-card" appScrollReveal [staggerDelay]="100" [delay]="i * 100">
           <div class="card-background-glow {{card.colorClass}}-glow"></div>
           <div class="icon-wrapper {{card.colorClass}}-icon">
             <div class="icon-bg-effect"></div>

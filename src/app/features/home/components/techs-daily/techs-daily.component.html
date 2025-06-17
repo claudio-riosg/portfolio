@@ -16,8 +16,8 @@
   </div>
   
   <div class="techs-grid">
-    @for (tech of filteredTechs(); track tech.name) {
-      <div class="tech-card" [style.--hover-color]="tech.color">
+    @for (tech of filteredTechs(); track tech.name; let i = $index) {
+      <div class="tech-card" appScrollReveal [staggerDelay]="80" [delay]="i * 80" [animationClass]="'scroll-reveal-visible'" [triggerOnce]="true" [disableOnReducedMotion]="true" [style.--hover-color]="tech.color">
         <app-icon [config]="{ name: tech.icon.replace('.svg', ''), size: '40px', spritePath: '/icons/sprite.svg' }" [spriteExternal]="true"></app-icon>
         <span>{{ tech.name }}</span>
       </div>

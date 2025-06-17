@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExperienceCardComponent should be responsive (snapshot for different widths) 1`] = `
+<div
+  id="root3"
+  style="width: 350px;"
+>
+  <div
+    class="experience-card"
+  >
+    <div
+      appscrollreveal=""
+      class="experience-header scroll-reveal-hidden"
+      style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+    >
+      <h3
+        class="company"
+      >
+        Test Company
+      </h3>
+      <div
+        class="role-period"
+      >
+        <span
+          class="role"
+        >
+          Test Title
+        </span>
+        <span
+          class="period"
+        >
+          (2020 - 2022)
+        </span>
+      </div>
+    </div>
+    <p
+      appscrollreveal=""
+      class="summary scroll-reveal-hidden"
+      style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+    >
+       Test summary for the experience card. 
+    </p>
+    <ul
+      class="details"
+    >
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         First detail 
+      </li>
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         Second detail 
+      </li>
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         Third detail 
+      </li>
+      
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ExperienceCardComponent should be responsive (snapshot for different widths) 2`] = `
+<div
+  id="root3"
+  style="width: 700px;"
+>
+  <div
+    class="experience-card"
+  >
+    <div
+      appscrollreveal=""
+      class="experience-header scroll-reveal-hidden"
+      style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+    >
+      <h3
+        class="company"
+      >
+        Test Company
+      </h3>
+      <div
+        class="role-period"
+      >
+        <span
+          class="role"
+        >
+          Test Title
+        </span>
+        <span
+          class="period"
+        >
+          (2020 - 2022)
+        </span>
+      </div>
+    </div>
+    <p
+      appscrollreveal=""
+      class="summary scroll-reveal-hidden"
+      style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+    >
+       Test summary for the experience card. 
+    </p>
+    <ul
+      class="details"
+    >
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         First detail 
+      </li>
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         Second detail 
+      </li>
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         Third detail 
+      </li>
+      
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ExperienceCardComponent should be responsive (snapshot for different widths) 3`] = `
+<div
+  id="root3"
+  style="width: 1024px;"
+>
+  <div
+    class="experience-card"
+  >
+    <div
+      appscrollreveal=""
+      class="experience-header scroll-reveal-hidden"
+      style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+    >
+      <h3
+        class="company"
+      >
+        Test Company
+      </h3>
+      <div
+        class="role-period"
+      >
+        <span
+          class="role"
+        >
+          Test Title
+        </span>
+        <span
+          class="period"
+        >
+          (2020 - 2022)
+        </span>
+      </div>
+    </div>
+    <p
+      appscrollreveal=""
+      class="summary scroll-reveal-hidden"
+      style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+    >
+       Test summary for the experience card. 
+    </p>
+    <ul
+      class="details"
+    >
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         First detail 
+      </li>
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         Second detail 
+      </li>
+      <li
+        appscrollreveal=""
+        class="scroll-reveal-hidden"
+        style="opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(2px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);"
+      >
+         Third detail 
+      </li>
+      
+    </ul>
+  </div>
+</div>
+`;

@@ -2,13 +2,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../../../../shared/ui/svg-icon/svg-icon.component';
 import { ApproachCard } from '@app/core/models/approach-card.interface';
+import { ScrollRevealDirective } from '../../../../core/directives/scroll-reveal.directive';
 
 
 
 @Component({
   selector: 'app-my-approach',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, ScrollRevealDirective],
   templateUrl: './my-approach.component.html',
   styleUrl: './my-approach.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

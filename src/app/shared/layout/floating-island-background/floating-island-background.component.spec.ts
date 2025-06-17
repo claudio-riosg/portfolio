@@ -28,7 +28,7 @@ describe('FloatingIslandBackgroundComponent', () => {
     fixture.componentRef.setInput('imageUrl', 'test');
     fixture.detectChanges();
     const imgElement = fixture.debugElement.query(By.css('img.floating-island'));
-    expect(imgElement.nativeElement.src).toContain('test.png');
+    expect(imgElement.nativeElement.src).toContain('test.webp');
   });
 
   it('should display the dark theme image', () => {
@@ -36,6 +36,6 @@ describe('FloatingIslandBackgroundComponent', () => {
     fixture.componentRef.setInput('imageUrl', 'test');
     fixture.detectChanges();
     const imgElement = fixture.debugElement.query(By.css('img.floating-island'));
-    expect(imgElement.nativeElement.src).toContain('test-dark.png');
+    expect(imgElement.nativeElement.src).toContain('test-dark.webp');
   });
 });

@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../../core/services/theme.service'
 import { IconComponent } from '../../../../shared/ui/svg-icon/svg-icon.component';
+import { ScrollRevealDirective } from '../../../../core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-techs-daily',
   standalone: true,
-  imports: [CommonModule, IconComponent ],
+  imports: [CommonModule, IconComponent, ScrollRevealDirective ],
   templateUrl: './techs-daily.component.html',
   styleUrls: ['./techs-daily.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
