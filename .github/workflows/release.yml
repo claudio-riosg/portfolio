@@ -22,14 +22,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Configure git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Run standard-version
         run: npx standard-version
 
       - name: Push changes and tags
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git push --follow-tags origin main
+        run: git push --follow-tags origin main
 
       - name: Build production
         run: npm run build
