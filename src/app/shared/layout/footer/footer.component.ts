@@ -27,14 +27,14 @@ export class FooterComponent {
   socialLinksSignal = signal<SocialLinkIcon[]>([
     {
       name: 'GitHub',
-      path: 'https://github.com/tuusuario',
+      path: 'https://github.com/claudio-riosg',
       iconName: 'github',
       size: '24px',
       spritePath: ''
     },
     {
       name: 'LinkedIn',
-      path: 'https://linkedin.com/in/tuusuario',
+      path: 'https://linkedin.com/in/claudio-rios-gajardo',
       iconName: 'linkedin',
       size: '24px',
       spritePath: ''

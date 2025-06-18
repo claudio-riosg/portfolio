@@ -146,6 +146,16 @@
   --breakpoint-mobile: 480px;
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1024px;
+
+  // Gradientes y transiciones reutilizables para My Approach
+  --bg-approach-section: radial-gradient(ellipse at center, rgba(var(--color-primary-rgb), 0.03) 0%, transparent 70%);
+  --bg-approach-before: radial-gradient(circle at 20% 80%, rgba(var(--color-primary-rgb), var(--bg-glow-strength, 0.1)) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(var(--color-secondary-rgb), var(--bg-glow-strength, 0.1)) 0%, transparent 50%);
+  --gradient-title-decoration: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.5), transparent);
+  --transition-card: transform var(--transition-duration-sm, 0.2s) var(--transition-easing-standard), box-shadow var(--transition-duration-sm, 0.2s) var(--transition-easing-standard), border-color var(--transition-duration-sm, 0.2s) var(--transition-easing-standard);
+  --transition-glow: all var(--transition-duration-xl, 0.6s) var(--transition-easing-standard);
+  --transition-icon-wrapper: transform var(--transition-duration-md, 0.4s) var(--transition-easing-standard);
+  --transition-icon-bg: all var(--transition-duration-md, 0.4s) var(--transition-easing-standard);
+  --transition-icon: transform var(--transition-duration-sm, 0.3s) var(--transition-easing-standard), color var(--transition-duration-sm, 0.3s) var(--transition-easing-standard);
 }
 
 // ====================

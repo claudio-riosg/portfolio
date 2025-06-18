@@ -47,3 +47,48 @@ body {
     transition-delay: 0s !important;
   }
 }
+
+// Global layout and section helpers
+.container {
+  max-width: var(--max-width-content, 1440px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header {
+  text-align: center;
+  position: relative;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, var(--font-size-h2, 3.5rem));
+  font-weight: var(--font-weight-bold, 700);
+  margin-bottom: var(--space-md, 1.5rem); 
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+}
+
+.title-gradient {
+  background: var(--gradient-text-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: var(--font-size-lg, 1.25rem); 
+  color: var(--color-text-secondary);
+  max-width: var(--max-width-text-md, 600px);
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.title-decoration {
+  width: 100px;
+  height: 1px;
+  background: var(--gradient-title-decoration, linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.5), transparent));
+  margin: var(--space-sm, 0.75rem) auto 0; 
+}
