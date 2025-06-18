@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/claudio-riosg/portfolio/compare/v0.0.6...v0.0.7) (2025-06-18)
+
+
+### Features
+
+* add animations in footer ([22358b0](https://github.com/claudio-riosg/portfolio/commit/22358b0b698046e7dd0bd0abbcb1760953b772a9))
+
 ### [0.0.6](https://github.com/claudio-riosg/portfolio/compare/v0.0.5...v0.0.6) (2025-06-18)
 
 
