@@ -29,6 +29,11 @@
                 "glob": "**/*",
                 "input": "public",
                 "output": "/"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "stylePreprocessorOptions": {

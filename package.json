@@ -11,8 +11,7 @@
     "test:coverage": "jest --coverage",
     "prerender": "ng run portfolio:prerender",
     "lint": "ng lint",
-    "release": "standard-version",
-    "postbuild": "cp src/_redirects dist/portfolio/_redirects"
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {
