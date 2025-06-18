@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, WritableSignal } from '@angular/core';
 import { TableInfo } from '@app/core/models/table-info.interface';
 import { ContactInfoComponent } from '@app/features/contact/components/contact-info/contact-info.component';
 import { SocialMediaInfoComponent } from '@app/features/contact/components/social-media-info/social-media-info.component';
@@ -16,6 +16,7 @@ import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.direct
   ],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
   imageUrl = signal('images/hands');
@@ -33,12 +34,12 @@ export class ContactComponent {
       ],
       [
         { text: 'Timezone', icon: 'timezone' },
-        { text: 'UTM/GMT-6:00' }
+        { text: 'UTC/GMT-6:00' }
       ],
       [
         { text: 'E-mail', icon: 'email' },
         {
-          text: 'connect.claudioriosgajardo@gmail.com',
+          text: 'claudioriosgajardo@gmail.com',
           link: 'mailto:connect.claudioriosgajardo@gmail.com',
         },
       ],
@@ -57,8 +58,8 @@ export class ContactComponent {
         },
       ],
       [
-        { text: 'Twitter', icon: 'twitter' },
-        { text: 'x.com/---', link: '-------' },
+        { text: 'Reddit', icon: 'reddit' },
+        { text: 'claudio_riosg', link: 'https://www.reddit.com/user/Fair_Eye5343/' },
       ],
       [
         { text: 'GitHub', icon: 'github' },

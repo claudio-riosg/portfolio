@@ -6,6 +6,7 @@
   background: var(--card-bg, rgba(255,255,255,0.02));
   box-shadow: var(--shadow-card-default, none);
   backdrop-filter: blur(2px);
+  color: var(--color-text-secondary, #f3f4f6);
 }
 
 .table-row {
@@ -14,6 +15,7 @@
   background: transparent;
   align-items: center;
   transition: background 0.2s;
+  color: inherit;
   
   &:last-child {
     border-bottom: none;
@@ -34,6 +36,7 @@
 .table-cell {
   padding: var(--space-md) var(--space-lg);
   font-size: var(--font-size-base, 1rem);
+  color: inherit;
   
   a {
     color: var(--color-primary, #818cf8);
@@ -73,6 +76,7 @@
   padding-top: var(--space-lg);
   padding-bottom: var(--space-lg);
   padding-right: 0;
+  color: var(--color-text-secondary, #f3f4f6);
 }
 
 .icon-cell-wrapper {
@@ -80,22 +84,19 @@
   height: 100%;
 }
 
-.icon-cell app-icon {
+.icon-cell app-icon, .icon-cell app-icon svg {
   width: 32px;
   height: 32px;
+  fill: currentColor;
   transition: color 0.2s;
 }
 
-.icon-cell:hover app-icon {
+.icon-cell:hover app-icon, .icon-cell:hover app-icon svg {
   color: var(--color-primary, #818cf8);
+  fill: var(--color-primary, #818cf8);
 }
 
 .icon-hoverable:hover app-icon svg {
   color: var(--color-primary, #818cf8) !important;
   fill: var(--color-primary, #818cf8) !important;
-}
-
-.icon-cell app-icon svg {
-  fill: currentColor;
-  color: currentColor;
 }
