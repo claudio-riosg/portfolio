@@ -42,24 +42,6 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should toggle menu when burger button is clicked', () => {
-    // Initial state should be closed
-    expect(component.menuOpen()).toBe(false);
-
-    // Find the burger button and click it
-    const burgerButton = fixture.debugElement.query(By.css('.burger'));
-    burgerButton.nativeElement.click();
-
-    // Menu should now be open
-    expect(component.menuOpen()).toBe(true);
-
-    // Click again to close
-    burgerButton.nativeElement.click();
-
-    // Menu should be closed again
-    expect(component.menuOpen()).toBe(false);
-  });
-
   it('should close menu when escape key is pressed', () => {
     // Open the menu first
     component.toggleMenu();

@@ -10,18 +10,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NavLink } from '../../../../core/models/nav-link.interface';
 
-
-
 @Component({
   selector: 'app-nav-links',
   imports: [CommonModule, RouterLink, RouterLinkActive],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./nav-links.component.scss'],
   template: `
-    <nav 
-      class="nav-links" 
+    <nav
+      class="nav-links"
       [class.mobile-open]="mobileMenuOpen"
-      role="navigation" 
+      role="navigation"
       aria-label="Main navigation"
     >
       <a
@@ -40,8 +38,8 @@ export class NavLinksComponent {
   @Input({ required: true }) isMobileView!: Signal<boolean>;
   @Output() linkClick = new EventEmitter<void>();
   links: NavLink[] = [
-    { path: '/blog', name: 'Blog' },
     { path: '/experience', name: 'Experience' },
+    { path: '/blog', name: 'Blog' },
     { path: '/contact', name: 'Contact' },
   ];
 }

@@ -8,3 +8,9 @@ export interface IconConfig {
   hoverable?: boolean;
   darkMode?: boolean;
 }
+
+
+export interface SocialLinkIcon extends Pick<IconConfig, 'name' | 'spritePath' | 'size'> {
+  path: string;
+  iconName: string;
+}

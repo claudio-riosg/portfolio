@@ -1,38 +1,38 @@
 <header class="header" [class.scrolled]="isScrolled()">
   <div class="header-container">
-    <a
-      routerLink="/"
-      class="logo"
-      (click)="closeMenu()"
-      [attr.aria-label]="'Ir al inicio'"
-    >
-      <app-logo />
-    </a>
+    <div class="header-left">
+      <a routerLink="/" class="logo" (click)="closeMenu()" [attr.aria-label]="'Ir al inicio'">
+        <app-logo />
+      </a>
+      <!-- Links desktop -->
+      <ng-container *ngIf="!isMobileView()">
+        <app-nav-links [mobileMenuOpen]="false" [isMobileView]="isMobileView"></app-nav-links>
+      </ng-container>
+    </div>
 
-    <button
-      class="burger"
-      [class.active]="menuOpen()"
-      (click)="toggleMenu()"
-      [attr.aria-label]="menuOpen() ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
-      [attr.aria-expanded]="menuOpen()"
-      type="button"
-    >
+    <!-- Toggle solo  desktop -->
+    <ng-container *ngIf="!isMobileView()">
+      <div class="header-right">
+        <app-theme-toggle />
+      </div>
+    </ng-container>
+
+    <!-- Burger solo  mobile -->
+    <button *ngIf="isMobileView()" class="burger" [class.active]="menuOpen()" (click)="toggleMenu()"
+      [attr.aria-label]="menuOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+      [attr.aria-expanded]="menuOpen()" type="button">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </button>
+  </div>
 
-    <div
-      class="nav-wrapper"
-      [class.open]="menuOpen()"
-      [attr.inert]="(isMobileView() && !menuOpen()) ? true : null"
-    >
-      <app-nav-links
-        [mobileMenuOpen]="menuOpen()"
-        [isMobileView]="isMobileView"
-        (linkClick)="closeMenu()"
-      ></app-nav-links>
-
+  <!-- Menú mobile outside flow flex, under header -->
+  <div class="nav-wrapper" *ngIf="isMobileView()" [class.open]="menuOpen()"
+    [attr.inert]="(isMobileView() && !menuOpen()) ? true : null">
+    <app-nav-links [mobileMenuOpen]="menuOpen()" [isMobileView]="isMobileView"
+      (linkClick)="closeMenu()"></app-nav-links>
+    <div class="mobile-toggle-wrapper">
       <app-theme-toggle />
     </div>
   </div>
