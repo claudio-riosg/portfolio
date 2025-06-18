@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 jobs:
   release:
@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -20,18 +22,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run standard-version
+        run: npx standard-version
+
+      - name: Push changes and tags
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git push --follow-tags origin main
+
       - name: Build production
         run: npm run build
 
-      - name: Generate changelog (if missing)
-        run: |
-          if [ ! -f CHANGELOG.md ]; then
-            npx standard-version --first-release --skip.tag --skip.commit;
-          fi
-
       - name: Archive production build
-        run: |
-          tar -czf dist.tar.gz dist/
+        run: tar -czf dist.tar.gz dist/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

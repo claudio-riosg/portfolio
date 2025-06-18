@@ -10,7 +10,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prerender": "ng run portfolio:prerender",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-preset-angular": "^14.0.0",
+    "standard-version": "^9.5.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.33.1"
   }
