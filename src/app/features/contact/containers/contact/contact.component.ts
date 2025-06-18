@@ -1,10 +1,9 @@
 import { Component, signal, WritableSignal } from '@angular/core';
-import { TocComponent } from '../../../../shared/ui/toc/toc.component';
-import { TableInfo } from '../../../../core/models/table-info.interface';
-import { ContactInfoComponent } from '../../components/contact-info/contact-info.component';
-import { SocialMediaInfoComponent } from '../../components/social-media-info/social-media-info.component';
-import { FloatingIslandBackgroundComponent } from '../../../../shared/layout/floating-island-background/floating-island-background.component';
-import { ScrollRevealDirective } from '../../../../core/directives/scroll-reveal.directive';
+import { TableInfo } from '@app/core/models/table-info.interface';
+import { ContactInfoComponent } from '@app/features/contact/components/contact-info/contact-info.component';
+import { SocialMediaInfoComponent } from '@app/features/contact/components/social-media-info/social-media-info.component';
+import { FloatingIslandBackgroundComponent } from '@app/shared/layout/floating-island-background/floating-island-background.component';
+import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-contact',

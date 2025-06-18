@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IconComponent } from '../svg-icon/svg-icon.component';
+import { IconComponent } from '@app/shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-table-content',

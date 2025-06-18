@@ -1,7 +1,7 @@
 // button.component.ts
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {  ButtonConfig } from './button.types'; // Importa los tipos
+import {  ButtonConfig } from '@app/shared/ui/button/button.types'; // Importa los tipos
 
 @Component({
   selector: 'app-button',
