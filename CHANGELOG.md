@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/claudio-riosg/portfolio/compare/v0.0.7...v0.0.8) (2025-06-18)
+
+
+### Features
+
+* add pdf and contact ([ef9df26](https://github.com/claudio-riosg/portfolio/commit/ef9df26603696ec2b77971cba1536bacecabb04d))
+
 ### [0.0.7](https://github.com/claudio-riosg/portfolio/compare/v0.0.6...v0.0.7) (2025-06-18)
 
 
