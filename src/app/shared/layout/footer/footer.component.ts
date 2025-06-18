@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { LogoComponent } from '../../ui/logo/logo.component';
+import { LogoComponent } from '@app/shared/ui/logo/logo.component';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LinksModulesFooterComponent } from './components/links-modules-footer/links-modules-footer.component';
-import { SocialLinksFooterComponent } from './components/social-links-footer/social-links-footer.component';
+import { LinksModulesFooterComponent, SocialLinksFooterComponent } from '@app/shared/layout/footer/components';
 import { SocialLinkIcon } from '@app/core/models/icon-config.interface';
-import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-footer',
@@ -27,14 +25,14 @@ export class FooterComponent {
   socialLinksSignal = signal<SocialLinkIcon[]>([
     {
       name: 'GitHub',
-      path: 'https://github.com/tuusuario',
+      path: 'https://github.com/claudio-riosg',
       iconName: 'github',
       size: '24px',
       spritePath: ''
     },
     {
       name: 'LinkedIn',
-      path: 'https://linkedin.com/in/tuusuario',
+      path: 'https://linkedin.com/in/claudio-rios-gajardo',
       iconName: 'linkedin',
       size: '24px',
       spritePath: ''

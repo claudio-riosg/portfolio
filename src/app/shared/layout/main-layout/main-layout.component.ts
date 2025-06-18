@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { HeaderComponent } from "../header/header.component";
-import { FooterComponent } from "../footer/footer.component";
+import { HeaderComponent } from "@app/shared/layout/header/header.component";
+import { FooterComponent } from "@app/shared/layout/footer/footer.component";
 import { ScrollRevealDirective } from "@app/core/directives/scroll-reveal.directive";
 
 @Component({

@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ThemeToggleComponent } from '../../ui/theme-toggle/theme-toggle.component';
-import { NavLinksComponent } from './nav-links/nav-links.component';
-import { LogoComponent } from '../../ui/logo/logo.component';
+import { ThemeToggleComponent } from '@app/shared/ui/theme-toggle/theme-toggle.component';
+import { NavLinksComponent } from '@app/shared/layout/header/nav-links/nav-links.component';
+import { LogoComponent } from '@app/shared/ui/logo/logo.component';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
 
 @Component({

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { ExperienceCardComponent } from '../../components/experience-card/experience-card.component';
+import { ExperienceCardComponent } from '@app/features/experience/components/experience-card/experience-card.component';
 import { WorkExperience } from '@app/core/models/work-experience.interface';
 import { ThemeService } from '@app/core/services/theme.service';
 import { FloatingIslandBackgroundComponent } from '@app/shared/layout/floating-island-background/floating-island-background.component';

@@ -1,20 +1,15 @@
 @use 'abstracts/mixins' as *;
 @use 'abstracts/variables' as *;
+@use 'helpers/animations' as *;
 
-$header-max-width: 1200px;
-$header-padding-desktop: 0.3rem; 
-$header-padding-mobile: 1rem;
 $burger-size: 28px;
 $burger-line-height: 3px;
-$mobile-breakpoint: 768px;
 $transition-duration: 0.3s;
 $mobile-transition-duration: 0.4s;
 $transition-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
 $mobile-menu-max-height: 450px;
-$header-z-index: 100;
 $burger-z-index: 110;
 
-// Mixin for burger lines
 @mixin burger-line {
   display: block;
   width: 100%;
@@ -26,380 +21,128 @@ $burger-z-index: 110;
               background-color $transition-duration $transition-easing;
 }
 
-// Mixin for burger button hover state
-@mixin burger-hover-state {
-  background-color: var(--hover-bg);
-  transform: scale(1.05);
-}
-
 .header {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: $header-z-index;
-
-  // Initial state (default - not scrolled)
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
+  z-index: 100;
+  background: transparent;
   border-bottom: 1px solid transparent;
   box-shadow: none;
-
-  // Transitions for properties that change on scroll
   transition: background-color $transition-duration $transition-easing,
               backdrop-filter $transition-duration $transition-easing,
               border-color $transition-duration $transition-easing,
               box-shadow $transition-duration $transition-easing;
-
   &.scrolled {
-    background-color: var(--header-bg); // Header background
-    backdrop-filter: blur(var(--blur-amount, 10px)); // Blur effect
-    -webkit-backdrop-filter: blur(var(--blur-amount, 10px));
-    border-bottom: 1px solid var(--color-border-global); // Bottom border
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.12),
-      0 1px 2px rgba(0, 0, 0, 0.24); // Shadow
+    background: var(--header-bg);
+    backdrop-filter: blur(var(--blur-amount, 10px));
+    border-bottom: 1px solid var(--color-border-global);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   }
+}
 
-  &-container {
-    max-width: min($header-max-width, var(--max-width, $header-max-width));
-    margin: 0 auto;
-    @include flex-center;
-    justify-content: space-between;
-    position: relative;
-    min-height: 60px;
-    padding: var(--space-sm, 0.5rem) $header-padding-mobile; // Default mobile padding
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: $burger-size;
+  height: $burger-size;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
+  z-index: $burger-z-index;
+  border-radius: 0.375rem;
+  background: none;
+  border: none;
+  position: relative;
+  transition: background-color $transition-duration $transition-easing,
+              transform $transition-duration $transition-easing;
+  &:hover { background-color: var(--hover-bg); transform: scale(1.05); }
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  &:active { transform: scale(0.95); }
+  span { @include burger-line; transform-origin: center; }
+  &.active span {
+    &:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    &:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    &:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
   }
+}
 
-  .logo {
-    flex: 0 0 auto;
-    @include flex-center;
-    justify-content: flex-start;
-    transition: transform $transition-duration $transition-easing;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-  }
-
-  //Burguer button styles
-  .burger {
-    display: flex; 
-    background: none;
-    border: none;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: $burger-size;
-    height: $burger-size;
-    cursor: pointer;
-    padding: 0.25rem;
-    margin-left: 0.5rem;
-    z-index: $burger-z-index;
-    border-radius: 0.375rem;
-    position: relative;
-    transition: background-color $transition-duration $transition-easing,
-                transform $transition-duration $transition-easing;
-
-    &:hover {
-      @include burger-hover-state;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    // Burger lines
-    span {
-      @include burger-line;
-      transform-origin: center;
-    }
-
-    // Active state animation (close/cross)
-    &.active span {
-      &:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-      &:nth-child(2) { opacity: 0; transform: scaleX(0); }
-      &:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.nav-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: var(--header-bg-mobile, #fff);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: max-height $mobile-transition-duration $transition-easing,
+              opacity #{$mobile-transition-duration * 0.8} $transition-easing,
+              visibility $mobile-transition-duration $transition-easing,
+              transform #{$mobile-transition-duration * 0.9} $transition-easing;
+  padding: 0;
+  &.open {
+    max-height: $mobile-menu-max-height;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    padding: var(--space-lg, 1.5rem) var(--space-md, 1rem);
+    background: var(--header-bg-mobile, #fff);
+    > * {
+      animation: slideInProfessional 0.4s $transition-easing forwards;
+      opacity: 0;
+      transform: translateY(-12px);
     }
   }
+  &:not(.open) > * {
+    animation: slideOutFast 0.32s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+    animation-fill-mode: both;
+  }
+}
 
- 
+// Responsive
+@media (min-width: 769px) {
+  .nav-wrapper, .mobile-toggle-wrapper { display: none !important; }
+  .burger { display: none !important; }
+  app-nav-links { display: flex !important; }
+  .header-right app-theme-toggle { display: flex !important; margin-left: 1.5rem; }
+}
+@media (max-width: 768px) {
+  app-nav-links, .header-right { display: none !important; }
+  .burger { display: flex !important; }
   .nav-wrapper {
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
     right: 0;
-    width: 100%;
-    max-width: none;
-    background: linear-gradient(
-      180deg,
-      var(--header-bg-mobile, rgba(255,255,255,0.97)) 0%,
-      var(--header-bg-mobile, rgba(255,255,255,0.97)) 90%,
-      transparent 100%
-    );
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    flex-direction: column; 
-    align-items: stretch; 
-    overflow: hidden;
-
-    // Initial state (closed)
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px); // Slight offset for entry animation
-    transition:
-      max-height $mobile-transition-duration $transition-easing,
-      opacity #{$mobile-transition-duration * 0.8} $transition-easing,
-      visibility $mobile-transition-duration $transition-easing,
-      transform #{$mobile-transition-duration * 0.9} $transition-easing;
-    padding: 0;
-
-    // Pseudo-element for "height effect" in animation
-    &::before {
-      content: '';
-      display: block;
-      height: 0;
-      opacity: 0;
-      transition:
-        height $mobile-transition-duration $transition-easing,
-        opacity #{$mobile-transition-duration * 0.7} $transition-easing;
-    }
-
-    // Open state
-    &.open {
-      max-height: $mobile-menu-max-height;
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      padding: var(--space-lg, 1.5rem) var(--space-md, 1rem); 
-      background: var(--header-bg-mobile, rgba(255,255,255,0.97));
-
-      &::before {
-        height: 8px; // For a small space when opening
-        opacity: 1;
-      }
-      // Staggered entry animation for inner elements
-      > * {
-        animation: slideInProfessional 0.4s $transition-easing forwards;
-        opacity: 0;
-        transform: translateY(-12px);
-      }
-      @for $i from 1 through 4 {
-        > *:nth-child(#{$i}) {
-          animation-delay: 0.05s * $i;
-        }
-      }
-    }
-
-    // Exit animation (closed)
-    &:not(.open) {
-      transition:
-        max-height 0.35s $transition-easing,
-        opacity 0.2s $transition-easing,
-        visibility 0.35s $transition-easing,
-        transform 0.25s $transition-easing;
-
-      > * {
-        animation: slideOutFast 0.32s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-        animation-fill-mode: both;
-      }
-      @for $i from 1 through 4 {
-        > *:nth-child(#{$i}) {
-          animation-delay: 0.01s * $i;
-        }
-      }
-    }
-  }
-
-  @media (width > 768px) {
-    // Hide burger button on desktop
-    .burger {
-      display: none;
-    }
-
-    // Adjust padding for header container on desktop
-    &-container {
-      padding: var(--space-sm, 0.5rem) var(--content-padding, $header-padding-desktop);
-    }
-
-    // Desktop navigation styles
-    .nav-wrapper {
-      position: static; // Remove absolute positioning
-      background: none; // No background
-      box-shadow: none; // No shadow
-      flex-direction: row; // Elements in a row
-      align-items: center;
-      overflow: visible; // No content hiding
-      max-height: none; // No height restriction
-      opacity: 1; // Always visible
-      visibility: visible;
-      transform: none; // No transforms
-      display: flex; // Ensure visible and flex
-      gap: var(--space-md, 1rem); // Spacing between elements
-      width: auto;
-      flex: 1;
-      justify-content: flex-end; // Align right
-      max-width: 70%; // Control max width
-      padding: 0; // No padding for nav-wrapper on desktop
-
-      // Remove pseudo-element on desktop
-      &::before {
-        display: none;
-      }
-
-      // Disable animations for child elements on desktop
-      > * {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-  }
-
-  // Small adjustments  for mobile devices
-  @media (max-width: 480px) {
-    &-container {
-      padding: var(--space-sm, 0.5rem) var(--space-md, 0.75rem);
-    }
-    .nav-wrapper.open {
-      padding: var(--space-md, 1rem) var(--space-sm, 0.5rem);
-    }
-    .burger {
-      width: 32px;
-      height: 32px;
-      span {
-        height: 3px;
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    app-nav-links,
-    .header-right {
-      display: none !important;
-    }
-    .burger {
-      display: flex !important;
-    }
-    .nav-wrapper {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      z-index: 99;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: var(--header-bg-mobile, #222);
-      padding-bottom: 1.5rem;
-      gap: 1.5rem;
-      &.open {
-        display: flex;
-      }
-      app-nav-links {
-        display: flex !important;
-        flex-direction: column;
-        width: 100%;
-      }
-      .mobile-toggle-wrapper {
-        display: flex !important;
-        justify-content: center;
-        width: 100%;
-        margin-top: 1rem;
-      }
-      .mobile-toggle-wrapper app-theme-toggle {
-        display: flex !important;
-      }
-    }
-  }
-
-  @media (min-width: 769px) {
-    .nav-wrapper,
-    .mobile-toggle-wrapper {
-      display: none !important;
-    }
-    .burger {
-      display: none !important;
-    }
-    app-nav-links {
-      display: flex !important;
-    }
-    .header-right app-theme-toggle {
-      display: flex !important;
-      margin-left: 1.5rem;
-    }
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--header-bg-mobile, #222);
+    padding-bottom: 1.5rem;
+    gap: 1.5rem;
+    &.open { display: flex; }
+    app-nav-links { display: flex !important; flex-direction: column; width: 100%; }
+    .mobile-toggle-wrapper { display: flex !important; justify-content: center; width: 100%; margin-top: 1rem; }
+    .mobile-toggle-wrapper app-theme-toggle { display: flex !important; }
   }
 }
-
-@keyframes slideInProfessional {
-  0% { opacity: 0; transform: translateY(-12px) scale(0.98); }
-  60% { opacity: 0.8; transform: translateY(-2px) scale(0.995); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes slideOutFast {
-  0% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(0) scale(0.98); }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .header {
-    .burger span { transition-duration: $transition-duration; }
-    .nav-wrapper { transition-duration: $transition-duration; }
-  }
+@media (max-width: 480px) {
+  .header-container { padding: var(--space-sm, 0.5rem) var(--space-md, 0.75rem); }
+  .nav-wrapper.open { padding: var(--space-md, 1rem) var(--space-sm, 0.5rem); }
+  .burger { width: 32px; height: 32px; span { height: 3px; } }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-
-// Solo muestra nav-wrapper en mobile
-.nav-wrapper {
-  @media (min-width: 769px) {
-    display: none !important;
-  }
-}
-
-// Oculta los links de desktop en mobile
-app-nav-links {
-  @media (max-width: 768px) {
-    display: none !important;
-  }
-}
-
-// Ajusta el toggle para que siempre esté a la derecha
-app-theme-toggle {
-  margin-left: 1.5rem;
+  .header * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
