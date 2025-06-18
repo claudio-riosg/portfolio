@@ -132,8 +132,14 @@
   app-icon { pointer-events: none; }
 }
 
-.tech-card app-icon { color: var(--color-text-secondary, #6b7280); }
-.tech-card:hover app-icon { color: var(--hover-color); }
+.tech-card app-icon, .tech-card svg {
+  color: var(--color-text-secondary, #6b7280);
+  fill: currentColor;
+}
+.tech-card:hover app-icon, .tech-card:hover svg {
+  color: var(--hover-color, var(--color-primary, #4f46e5));
+  fill: currentColor;
+}
 
 @media (max-width: 768px) {
   :host { --horizontal-padding: 1rem; }
