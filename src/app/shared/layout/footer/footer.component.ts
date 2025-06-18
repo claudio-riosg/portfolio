@@ -4,11 +4,13 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LinksModulesFooterComponent, SocialLinksFooterComponent } from '@app/shared/layout/footer/components';
 import { SocialLinkIcon } from '@app/core/models/icon-config.interface';
+import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterLink, LogoComponent, LinksModulesFooterComponent, SocialLinksFooterComponent],
+  imports: [CommonModule, RouterLink, LogoComponent, LinksModulesFooterComponent,
+    SocialLinksFooterComponent, ScrollRevealDirective],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
