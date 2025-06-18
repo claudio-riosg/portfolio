@@ -1,10 +1,8 @@
-import { Component, input, computed, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, input, computed, ChangeDetectionStrategy, inject, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { IconConfig } from '../../../core/models/icon-config.interface'; // Asegúrate de tener este modelo definido
-import { SvgIconLoaderService } from '../../../core/services/svg-icon-loader.service';
-import { effect, signal } from '@angular/core';
-
+import { IconConfig } from '@app/core/models/icon-config.interface';
+import { SvgIconLoaderService } from '@app/core/services/svg-icon-loader.service';
 
 @Component({
   selector: 'app-icon',
@@ -29,30 +27,20 @@ export class IconComponent {
     hoverable: true,
     darkMode: false,
   });
-  /**
-   * Input to determine if the icon should be loaded as an external, individual SVG file.
-   * If true, the component attempts to load an SVG file named after the 'name' property (e.g., 'icon-name.svg')
-   * from the path specified in SvgIconLoaderService (typically 'icons/').
-   * This overrides sprite-based loading.
-   * Defaults to false.
-   */
+  
   external = input(false);
-  /**
-   * Input to indicate that the SVG sprite sheet (defined by `config.spritePath`)
-   * should be dynamically loaded or checked for in the DOM.
-   * If true, the component first checks if an `<object>` tag with an ID matching the sprite sheet name
-   * (e.g., 'sprite-svg' if spritePath is 'icons/sprite.svg') has already loaded the sprite.
-   * If not found or not ready, it falls back to loading the sprite sheet using `SvgIconLoaderService.loadSprite()`.
-   * This is ignored if `external` is true.
-   * Defaults to false.
-   */
+
   spriteExternal = input(false);
   svgHtml = signal<SafeHtml | null>(null);
   spriteHtml = signal<SafeHtml | null>(null);
 
+  // Signal reactivo para readiness del sprite
+  private spriteReady = signal<boolean>(false);
+
   constructor() {
     effect(() => {
       const config = this.currentConfig();
+      this.spriteReady = this.iconLoader.getSpriteReadySignal(config.spritePath);
       if (this.external()) {
         this.iconLoader
           .loadIcon(
@@ -62,17 +50,16 @@ export class IconComponent {
             config.color
           )
           .subscribe({
-            next: html => this.svgHtml.set(html),
-            error: err => console.error('Error loading external SVG:', config.name, err)
+            next: html => {
+              this.svgHtml.set(html);
+            },
           });
       } else if (this.spriteExternal()) {
-        // Wait for spriteReady signal
-        if (!this.iconLoader.spriteReady()) {
+        if (!this.spriteReady()) {
           return;
         }
-        // Check if the sprite is already loaded via an <object> tag in index.html (optimization)
-        const spriteId = config.spritePath.split('/').pop()?.split('.')[0];
-        const spriteObject = document.getElementById(`${spriteId}-svg`);
+        const spriteId = config.spritePath.split('/').pop()?.split('.')[0] + '-svg';
+        const spriteObject = document.getElementById(spriteId);
         if (spriteObject && spriteObject instanceof HTMLObjectElement && spriteObject.contentDocument) {
           const svgContent = spriteObject.contentDocument.documentElement;
           if (svgContent) {
@@ -80,19 +67,19 @@ export class IconComponent {
             return;
           }
         }
-        // Fallback to service loading
         this.iconLoader
           .loadSprite(config.spritePath)
           .subscribe({
-            next: html => this.spriteHtml.set(html),
-            error: err => console.error('Error loading sprite:', config.spritePath, err)
+            next: html => {
+              this.spriteHtml.set(html);
+            },
+            error: err => {}
           });
       }
     });
   }
 
   currentConfig = computed<Required<IconConfig>>(() => {
-  
     const providedConfig = this.config();
     return {
       name: providedConfig.name, 
@@ -105,6 +92,5 @@ export class IconComponent {
       darkMode: providedConfig.darkMode ?? false,
     };
   });
-
 
 }

@@ -12,6 +12,8 @@ $nav-easing: cubic-bezier(0.4, 0, 0.2, 1);
 $nav-hover-scale: 1.02;
 $nav-active-scale: 0.98;
 $mobile-breakpoint: 768px;
+$letter-spacing: 0.15em;
+
 
 // Interactive states mixin
 @mixin nav-link-interactive {
@@ -105,6 +107,7 @@ $mobile-breakpoint: 768px;
     position: relative;
     border-radius: $nav-border-radius;
     white-space: nowrap;
+    letter-spacing: $letter-spacing;
 
     @include nav-link-interactive;
 

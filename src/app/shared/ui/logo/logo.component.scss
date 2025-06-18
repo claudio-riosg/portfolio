@@ -46,18 +46,7 @@ svg {
   50% { opacity: 0; }
 }
 
-/* Responsive breakpoints */
-@media (max-width: 768px) {
-  .logo {
-    width: clamp(60px, 10vw, 80px);
-  }
-}
 
-@media (max-width: 480px) {
-  .logo {
-    width: clamp(50px, 8vw, 70px);
-  }
-}
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {

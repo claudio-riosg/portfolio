@@ -63,7 +63,7 @@ export class ContactComponent {
       ],
       [
         { text: 'GitHub', icon: 'github' },
-        { text: 'github.com/claudiorios', link: '------' },
+        { text: '@claudio-riosg', link: 'https://github.com/claudio-riosg' },
       ],
     ],
     columnWidths: ['1', '2'],

@@ -4,6 +4,8 @@ import { signal } from '@angular/core';
 import { NavLinksComponent } from './nav-links.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Routes } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { DummyComponent } from '@testing/mocks/components';
 
 // Define mock routes that match the ones used in the component
 const routes: Routes = [
@@ -21,10 +23,12 @@ describe('NavLinksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        NavLinksComponent,
-        RouterTestingModule.withRoutes(routes)
-      ]
+      imports: [NavLinksComponent, DummyComponent],
+      providers: [
+        provideRouter([
+          { path: 'experience', component: DummyComponent },
+        ]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavLinksComponent);

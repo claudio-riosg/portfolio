@@ -1,0 +1,94 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+
+$letter-spacing: 0.15em;
+.footer-spacer {
+  width: 100%;
+  height: var(--space-xl);
+  background: transparent;
+}
+
+.footer {
+  width: 100%;
+  color: var(--color-text-secondary);
+  padding: var(--space-lg) 0 0 0;
+  font-size: var(--font-size-base);
+  letter-spacing: $letter-spacing;
+  box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.04);
+}
+
+.footer__container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: 0 var(--content-padding);
+}
+
+.footer__brand {
+  @include m.flex-center;
+  margin-bottom: var(--space-xs);
+  a {
+    @include m.flex-center;
+    text-decoration: none;
+    &:focus-visible {
+      outline: 2.5px solid var(--color-primary);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--color-border-global);
+    }
+  }
+  app-logo {
+    width: 80px;
+    min-width: 60px;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-duration-md) var(--transition-easing-standard);
+    &:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+  }
+}
+
+.footer__nav-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  width: 100%;
+}
+
+.title-decoration {
+  width: 80%;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, rgba(var(--color-secondary-rgb), 0.8), transparent);
+  border-radius: 2px;
+}
+
+.footer__bottom {
+  width: 100%;
+  text-align: center;
+  padding: var(--space-md) 0 var(--space-xs) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background: none;
+}
+
+@media (max-width: 900px) {
+  .footer__container {
+    padding: 0 var(--content-padding-mobile);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__container {
+    padding: 0 var(--space-xs);
+  }
+  .footer__brand app-logo {
+    width: 70px;
+    min-width: 50px;
+  }
+}

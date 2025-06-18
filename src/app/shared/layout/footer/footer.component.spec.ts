@@ -1,26 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MainLayoutComponent } from './main-layout.component';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { SvgIconLoaderService } from '../../../core/services/svg-icon-loader.service';
 import { iconLoaderMock } from '@testing/helpers/svg-icon.mocks';
 
-describe('MainLayoutComponent', () => {
-  let component: MainLayoutComponent;
-  let fixture: ComponentFixture<MainLayoutComponent>;
+import { FooterComponent } from './footer.component';
+
+describe('FooterComponent', () => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainLayoutComponent],
+      imports: [FooterComponent],
       providers: [
         provideHttpClientTesting(),
         { provide: SvgIconLoaderService, useValue: iconLoaderMock },
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MainLayoutComponent);
+    fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

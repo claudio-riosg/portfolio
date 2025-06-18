@@ -10,4 +10,5 @@ export const iconLoaderMock = {
   loadIcon: jest.fn().mockReturnValue(of('safe-html')),
   loadSprite: jest.fn().mockReturnValue(of('safe-html')),
   spriteReady: signal(true),
+  getSpriteReadySignal: jest.fn().mockReturnValue(signal(true)),
 }; 
