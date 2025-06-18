@@ -6,9 +6,9 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { ButtonComponent } from '../../../../shared/ui/button/button.component';
-import { ProfileImageComponent } from '../../../../shared/ui/profile-image/profile-image.component';
-import { ScrollRevealDirective } from '../../../../core/directives/scroll-reveal.directive';
+import { ButtonComponent } from '@app/shared/ui/button/button.component';
+import { ProfileImageComponent } from '@app/shared/ui/profile-image/profile-image.component';
+import { ScrollRevealDirective } from '@app/core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-hero',
@@ -23,10 +23,20 @@ export class HeroComponent {
    @Output() downloadCvClick = new EventEmitter<void>();
 
   onContactClick() {
-    this.contactClick.emit();
+    window.location.href = 'mailto:connect.claudioriosgajardo@gmail.com';
   }
 
   onDownloadCvClick() {
-    this.downloadCvClick.emit();
+    this.downloadPdf();
+  }
+
+  downloadPdf() {
+    const url = 'docs/RESUME_CLAUDIO_RIOS_G.pdf';
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'RESUME_CLAUDIO_RIOS_G.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 }
