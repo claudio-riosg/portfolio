@@ -21,18 +21,12 @@ $burger-z-index: 110;
               background-color $transition-duration $transition-easing;
 }
 
-@mixin burger-hover-state {
-  background-color: var(--hover-bg);
-  transform: scale(1.05);
-}
-
 .header {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
+  background: transparent;
   border-bottom: 1px solid transparent;
   box-shadow: none;
   transition: background-color $transition-duration $transition-easing,
@@ -40,17 +34,15 @@ $burger-z-index: 110;
               border-color $transition-duration $transition-easing,
               box-shadow $transition-duration $transition-easing;
   &.scrolled {
-    background-color: var(--header-bg);
+    background: var(--header-bg);
     backdrop-filter: blur(var(--blur-amount, 10px));
     border-bottom: 1px solid var(--color-border-global);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   }
 }
 
 .burger {
   display: flex;
-  background: none;
-  border: none;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -61,10 +53,12 @@ $burger-z-index: 110;
   margin-left: 0.5rem;
   z-index: $burger-z-index;
   border-radius: 0.375rem;
+  background: none;
+  border: none;
   position: relative;
   transition: background-color $transition-duration $transition-easing,
               transform $transition-duration $transition-easing;
-  &:hover { @include burger-hover-state; }
+  &:hover { background-color: var(--hover-bg); transform: scale(1.05); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   &:active { transform: scale(0.95); }
   span { @include burger-line; transform-origin: center; }
@@ -81,8 +75,9 @@ $burger-z-index: 110;
   left: 0;
   right: 0;
   width: 100%;
-  background: linear-gradient(180deg, var(--header-bg-mobile, #fff) 0%, var(--header-bg-mobile, #fff) 90%, transparent 100%);
+  background: var(--header-bg-mobile, #fff);
   box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  display: flex;
   flex-direction: column;
   align-items: stretch;
   overflow: hidden;
@@ -114,13 +109,13 @@ $burger-z-index: 110;
   }
 }
 
+// Responsive
 @media (min-width: 769px) {
   .nav-wrapper, .mobile-toggle-wrapper { display: none !important; }
   .burger { display: none !important; }
   app-nav-links { display: flex !important; }
   .header-right app-theme-toggle { display: flex !important; margin-left: 1.5rem; }
 }
-
 @media (max-width: 768px) {
   app-nav-links, .header-right { display: none !important; }
   .burger { display: flex !important; }
@@ -142,7 +137,6 @@ $burger-z-index: 110;
     .mobile-toggle-wrapper app-theme-toggle { display: flex !important; }
   }
 }
-
 @media (max-width: 480px) {
   .header-container { padding: var(--space-sm, 0.5rem) var(--space-md, 0.75rem); }
   .nav-wrapper.open { padding: var(--space-md, 1rem) var(--space-sm, 0.5rem); }
