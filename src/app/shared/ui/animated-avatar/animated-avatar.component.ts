@@ -5,6 +5,7 @@ import {
   HostListener,
   inject,
   Input,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
@@ -13,14 +14,17 @@ import {
   standalone: true,
   templateUrl: './animated-avatar.component.html',
   styleUrl: './animated-avatar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnimatedAvatarComponent {
   @Input() sensitivity = 15; //control cursor sensitivity
   @Input() clickEffect = true; // efect for click interaction
+  @Input() isDark = false;
   position = { x: 0, y: 0 };
   scale = 1;
   rotation = 0;
   el = inject(ElementRef);
+  
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
