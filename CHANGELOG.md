@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/claudio-riosg/portfolio/compare/v0.0.5...v0.0.6) (2025-06-18)
+
+
+### Bug Fixes
+
+* routes angular ([6d7c8fa](https://github.com/claudio-riosg/portfolio/commit/6d7c8faf975956756407ed98de58c65ddbd6cc78))
+
 ### [0.0.5](https://github.com/claudio-riosg/portfolio/compare/v0.0.4...v0.0.5) (2025-06-18)
 
 
