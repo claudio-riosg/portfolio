@@ -30,5 +30,8 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('./features/experience/experience.routes').then((m) => m.EXPERIENCE_ROUTES)
   },
-   
+  {
+    path: '**',
+    loadChildren: () => import('./features/404/404.routes').then(m => m.NOT_FOUND_ROUTES)
+  }
 ];
