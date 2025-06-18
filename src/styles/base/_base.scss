@@ -20,22 +20,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
 }
-
 // Global animation styles for scroll reveal
 [appSimpleScrollReveal] {
   will-change: opacity, transform;
 }
-
 [appScrollReveal] {
   will-change: opacity, transform, filter;
 }
-
 // Accessibility: Reduce motion for users who prefer it
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  
   *,
   *::before,
   *::after {
@@ -91,4 +87,42 @@ body {
   height: 1px;
   background: var(--gradient-title-decoration, linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.5), transparent));
   margin: var(--space-sm, 0.75rem) auto 0; 
+}
+
+// Header layout helpers
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
